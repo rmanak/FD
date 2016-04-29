@@ -21,7 +21,8 @@ and can be used within a framework of a parallel computing infrastructure such a
 
 Software Homepage
 -----------------
-This software is hosted in UBC's numerical relativity group page, here:
+This software's homepage and extended tutorials/manual is here:
+
 <http://laplace.physics.ubc.ca/People/arman/FD_doc>
 
 
