@@ -1,0 +1,4 @@
+      ralpha = -(lnalpha(i) - lnalphap1) / hx - dble((-1 + a(i + 1) ** 2
+     # + x(i + 1) ** 2 * a(i + 1) ** 2 * Trr(i + 1)) / x(i + 1)) / 0.4D1
+     # - dble((-1 + a(i) ** 2 + x(i) ** 2 * a(i) ** 2 * Trr(i)) / x(i)) 
+     #/ 0.4D1

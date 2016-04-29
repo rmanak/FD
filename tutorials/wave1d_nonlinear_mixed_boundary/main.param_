@@ -1,0 +1,17 @@
+vcons:=?
+A:=?
+d:=?
+level:=?
+x_max:=?
+idsignum:=?
+a:=?
+p:=?
+myzero:=?
+steps:=?
+lambda:=?
+output_freq:=?
+b:=?
+x_min:=?
+delx:=?
+Nx:=?
+x0:=?

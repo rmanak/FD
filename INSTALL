@@ -1,0 +1,10 @@
+FD Installation
+===============
+
+There is nothing to install, package
+can be loaded by executing:
+
+	read("/your/fd/path/FD.mpl") 
+
+in your Maple session.
+

@@ -1,0 +1,152 @@
+
+Mon Sep 14 15:16:45 PDT 2015
+  * check for '/' '-' and address Graham's suggestion in adding asin acos...
+Fri Aug 21 16:26:27 PDT 2015
+  * Integrated Newton Solver routines to FD.mpl
+
+Fri May 15 10:45:53 PDT 2015
+  >> Graham's suggestion:
+     add the jacobian coeff by default muliplying the residual
+     and being passed in to all .f routines.
+
+Tue Feb 10 11:30:11 PST 2015
+  >> Requires Cmask integration eventually 
+
+Wed Feb  4 11:22:10 PST 2015
+  >> C driver routine creator computes the 'step' twice
+
+Mon Feb  2 18:33:02 PST 2015
+  >> kinda bug: FD doesn't check to see LHS and RHS
+   of each equation in a DDS are compatible
+
+Mon Feb  2 12:56:51 PST 2015
+  >> kinda bug : should warn if a function is not in gf list 
+    while it is attempting to discretize it!
+
+Wed Jan 28 12:01:21 PST 2015
+  >> Bug: without phys_bdy specification in Numerical Domain Specifier
+     the phys_bdy gets randomly associated with numbers ??
+     doesn't affect the calculation but needs to be fixed...
+      
+Wed Dec 17 08:05:45 PST 2014
+  >> removed include tv.inc from fortran routines
+  needs to look into optimization enabled codes
+
+Wed Jul 30 15:32:30 PDT 2014
+  >> added symbolic to Gen_Sten (for optimization)
+      converts f'(x,y) to f1(i,j) and adds f1 to GFs
+
+Mon Jul 28 16:32:56 PDT 2014
+  >> needs optimization for various derivative calculations.
+  >> needs a way of handling zero when expression simplifies to zero.
+  >> incorporate regularization to FD
+
+Mon Jul 28 16:32:21 PDT 2014
+  added A_FD_EVEN and A_FD_ODD functionallity 
+  now supports for a set of odd/even functions 
+
+Mon Mar 10 00:34:29 PDT 2014
+  bug: fix step problem in driver
+  done >> improve: fix header/call subroutine random order (sort maybe?)
+           added the sort, it seems to be working... needs further check...
+
+Sat Mar  8 22:30:44 PST 2014
+Tests:
+   wave1d_nonlinear_mixed_boundary >> IRE passed, convergence passed!
+   wave1d_periodc >> IRE passed, convergence passed!
+   emkgcn >> IRE passed, convergennce passed! Oh YEAH!!
+
+Todo:
+  done >> add phys_bdy to C driver
+  done >> add output_freq to C driver 
+----
+Tue Nov 12 16:20:51 PST 2013
+
+Todo:
+  done >> add definition of phys_bdy to the header
+  done >> pass in phys_bdy into the subroutine
+
+Mon Nov 11 21:57:01 PST 2013
+Todo:
+   done >> incorporate Newton_Solver into FD
+   done >> add periodic boundary condition
+   
+
+Mon Nov  4 21:47:09 PST 2013
+Todo: 
+  done >>  add the ignore_gf across all procs
+  - look into the recursive calls and how they handle "known_functions"
+
+------------------------------------------------
+Mon Nov  4 21:45:17 PST 2013
+****TEST: IRE converging for exact solutions!*****
+fixed _ problem
+time is conveted as t(n) > nt 
+functions are > f(n+1,x) > np1_f(x)
+_call's are now generated that are the files containing
+how to call subrtoutines in C
+----------------------------------
+Sat Nov  2 19:28:41 PDT 2013
+Update_FD_Table works properly
+see Built-in-FDA_Accuracy Matrix
+---------------------------------
+Fri Nov  1 16:54:07 PDT 2013
+done> C driver code generator 
+done> time dependend PDE in Fortran code
+
+-----------------------------
+Fri Nov  1 16:53:53 PDT 2013
+AAK:
+todo:
+done >>code generator: initializer for a given finite expression
+done >> code generator: C header for handling grid functions
+done >> code generator: F subroutine to evaluate FDA all along the grid
+-----------------------------
+
+Thu Oct 31 12:48:13 PDT 2013
+AAK:
+FPRM is working
+----------------------------
+Tue Oct 29 17:33:30 PDT 2013
+AAK:
+FMS, Shift_FD, FGF test passed
+----------------------------
+Fri Oct 25 23:18:43 PDT 2013
+AAK:
+developing shift operation now...
+-----------------------------
+Fri Oct 25 22:38:08 PDT 2013
+AAK:
+RTL seems to be working
+need to find a way to test it extensively
+-----------------------------------------
+Fri Oct 25 17:02:34 PDT 2013
+AAK:
+CtoD and DtoC working see tGen_Sten.mpl for the tests
+-needs some more warning if function names are improper
+-or variable names are not correct in grid functions
+--------------------------------
+Wed Oct 23 12:29:41 PDT 2013
+AAK:
+Gen_Expr: test passed for parsing the expression
+see tGen_Expr.mpl for the tests
+
+Gen_Sten: test passed for creating FDA in continuous fasion
+see tGen_Sten.mpl for the tests
+
+Extract_FD: test passed to create the derivative table 
+see tExtract_FD.mpl 
+Note: this proc cannot handle expression with multiple terms
+It can return a proper value for a single:
+   -constant,numeric
+   -symbol
+   -function
+But it is assumed that it will never be used for those expressions
+so it provides warnings!
+
+Sten: test passed, see tSten.mpl
+Cannot handle multiple expressions
+
+tStencil: test passed, see tStecil.mpl
+Cannot handle multiple expressions
+-------------------------------------

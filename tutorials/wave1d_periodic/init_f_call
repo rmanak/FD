@@ -1,0 +1,1 @@
+init_f_(x,&Nx,&A,&delx,&x0,res);

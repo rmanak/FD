@@ -1,0 +1,27 @@
+<style type="text/css">
+<!--
+.Constant { color: #ff6060; }
+.Special { color: #ff40ff; }
+.Statement { color: #ffff00; }
+-->
+</style>
+<pre id='vimCodeElement'>
+<span class="Statement">read</span> <span class="Constant">&quot;../../FD.mpl&quot;</span><span class="Special">:</span> Clean_FD<span class="Special">()</span><span class="Special">;</span> Make_FD<span class="Special">()</span><span class="Special">;</span>
+grid_functions <span class="Special">:=</span> <span class="Special">{</span>f<span class="Special">}</span><span class="Special">;</span>
+
+FD_table<span class="Special">[</span>t<span class="Special">]</span> <span class="Special">:=</span> <span class="Special">[[</span><span class="Constant">0</span><span class="Special">]</span><span class="Special">,</span><span class="Special">[</span><span class="Constant">0</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">]]</span><span class="Special">;</span>
+
+HeatEq <span class="Special">:=</span> <span class="Statement">diff</span><span class="Special">(</span>f<span class="Special">(</span>t<span class="Special">,</span>x<span class="Special">)</span><span class="Special">,</span>t<span class="Special">)</span> - <span class="Statement">diff</span><span class="Special">(</span>f<span class="Special">(</span>t<span class="Special">,</span>x<span class="Special">)</span><span class="Special">,</span>x<span class="Special">,</span>x<span class="Special">)</span><span class="Special">;</span>
+
+init_f<span class="Special">:=</span> T0 + <span class="Special">(</span>T1-T0<span class="Special">)</span>*<span class="Special">((</span>x-xmin<span class="Special">)</span>/<span class="Special">(</span>xmax-xmin<span class="Special">))</span>^<span class="Constant">2</span><span class="Special">;</span>
+Gen_Eval_Code<span class="Special">(</span>init_f<span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;c&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;init_f&quot;</span><span class="Special">)</span><span class="Special">;</span>
+
+HeatDDS <span class="Special">:=</span> <span class="Special">[</span>
+  <span class="Special">{</span> i<span class="Statement">=</span><span class="Special">[</span><span class="Constant">1</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">]</span>     <span class="Special">}</span> <span class="Statement">=</span> f<span class="Special">(</span>n<span class="Constant">+1</span><span class="Special">,</span>i<span class="Special">)</span> - T0 + myzero*x<span class="Special">(</span>i<span class="Special">)</span> <span class="Special">,</span>
+  <span class="Special">{</span> i<span class="Statement">=</span><span class="Special">[</span><span class="Constant">2</span><span class="Special">,</span>Nx<span class="Constant">-1</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">]</span>  <span class="Special">}</span> <span class="Statement">=</span> Gen_Sten<span class="Special">(</span>HeatEq<span class="Special">)</span> <span class="Special">,</span>
+  <span class="Special">{</span> i<span class="Statement">=</span><span class="Special">[</span>Nx<span class="Special">,</span>Nx<span class="Special">,</span><span class="Constant">1</span><span class="Special">]</span>   <span class="Special">}</span> <span class="Statement">=</span> f<span class="Special">(</span>n<span class="Constant">+1</span><span class="Special">,</span>i<span class="Special">)</span> - T1 +myzero*x<span class="Special">(</span>i<span class="Special">)</span>
+<span class="Special">]</span><span class="Special">;</span>
+
+A_Gen_Solve_Code<span class="Special">(</span>HeatDDS<span class="Special">,</span><span class="Special">{</span>f<span class="Special">(</span>n<span class="Constant">+1</span><span class="Special">,</span>i<span class="Special">)}</span><span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;d&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;update_f&quot;</span><span class="Special">)</span><span class="Special">;</span>
+A_Gen_Res_Code<span class="Special">(</span>HeatDDS<span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;d&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;residual_f&quot;</span><span class="Special">)</span><span class="Special">;</span>
+</pre>

@@ -1,0 +1,99 @@
+#---------- WAVE 1d example run-time parameter file -----------------------------------
+echo_params := 1
+pamr_trace_lev := 0
+evo_trace := 1
+
+#-------- KG field initial data (domain is a cube [-1,1,...]) ------------------------
+
+A := 1.0
+xc := 0
+yc := 0
+delx := 0.2
+dely := 0.2
+idsigx:= 1
+idsigy := 0
+myzero := 0
+ev_tol := 1.0e-8
+
+#--------------------------------------------------------------------------
+
+dim := 2
+ghost_width := [2 2]
+#periodic := [1 1]
+base_bbox := [-5.0 5.0 -5.0 5.0]
+base_shape := [65 65]
+max_lev := 4
+min_width := [5 5]
+lambda := 0.2
+rho_sp := 2
+rho_tm := 2
+
+gdm_no_overlap := 1
+
+steps := 256
+evo_max_iter := 1
+evo_min_iter := 1
+skip_frg := 1
+
+id_method := 0
+
+#np1_initial_guess := 1
+io_node := 0
+
+rg_eps_diss := 0.2
+eps_diss := 0.1
+diss_bdy := 0
+
+evo_tol := 1e-7
+TRE_max := 1.0e-7
+num_TRE_vars := 1
+TRE_vars := [ "f" "f_t" ]
+TRE_buffer := 8
+TRE_ibc_buffer := 2
+regrid_interval := 16
+TRE_norm := 0
+regrid_script := 0
+regrid_script_name = "example_1d.rgs"
+
+num_save_2_vars := 2
+save_2_vars := [ "f" "f_t" ]
+
+cls_merge_dist := 8
+cls_method := 0
+cls_align_mode := 1
+
+save_tag := "wave_2d_L0_"
+
+save_ivec := 1-*/8
+#-----------------------------------------------------
+#---------- gh3d fixed parameter file --------------------
+
+app_name := ["1/2/3D AMRD wave equation with periodic/dirichlet boundaries example"]
+
+num_evo_tl := 2
+ic_n := 2
+
+num_hyperbolic_vars := 2
+hyperbolic_vars := [ "f" "f_t" ]
+
+t0 := 0
+
+num_amr_inject   := 2
+amr_inject       := [ "f" "f_t" ]
+
+num_amr_sync     := 2
+amr_sync         := [ "f" "f_t" ]
+
+num_amr_interp4  := 2
+amr_interp4      := [ "f" "f_t" ]
+
+num_amr_transfer4:= 2
+amr_transfer4    := [ "f" "f_t" ]
+
+num_rg_diss_vars := 2
+rg_diss_vars     := [ "f" "f_t" ]
+
+num_tn_diss_vars := 2
+tn_diss_vars := [ "f" "f_t" ]
+
+#-----------------------------------------------------

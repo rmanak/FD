@@ -1,0 +1,112 @@
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <bbhutil.h>
+#include <sdf_read.h>
+#include <u_f.h>
+#include <init_f.h>
+#include <ire_f.h>
+#include <res_f.h>
+#include <res_f_t.h>
+#include <u_b_f.h>
+#include <u_b_f_t.h>
+#include <u_f_t.h>
+#include <init_f_t.h>
+/* Shapes: */
+int Nx;
+int Nz;
+int shape[2];
+int dim;
+int level;
+/* Coordinates: */
+double *x;
+double *z;
+/* Grid Functions: */
+double *n_f;
+double *n_f_t;
+double *nm1_f;
+double *nm2_f;
+double *np1_f;
+double *np2_f;
+/* Parameters: */
+double A;
+double ht;
+double xc;
+double zc;
+double delx;
+double delz;
+double idsigx;
+double idsigz;
+double myzero;
+/* Coordinate Parameters: */
+double x_max;
+double x_min;
+double hx;
+double z_max;
+double z_min;
+double hz;
+double bbox[4];
+int phys_bdy[4];
+/* Time Evolution Parameters: */
+int steps;
+int output_freq;
+double lambda;
+double time;
+void read_params(char *p_file,int *output_freq,double *A,double *delz,double *z_max,double *xc,int *Nx,double *idsigx,double *zc,double *myzero,double *idsigz,double *lambda,double *x_max,int *level,double *x_min,double *z_min,int *Nz,int *steps,double *delx)
+{
+get_param(p_file,"output_freq","long",1,output_freq);
+get_param(p_file,"A","double",1,A);
+get_param(p_file,"delz","double",1,delz);
+get_param(p_file,"z_max","double",1,z_max);
+get_param(p_file,"xc","double",1,xc);
+get_param(p_file,"Nx","long",1,Nx);
+get_param(p_file,"idsigx","double",1,idsigx);
+get_param(p_file,"zc","double",1,zc);
+get_param(p_file,"myzero","double",1,myzero);
+get_param(p_file,"idsigz","double",1,idsigz);
+get_param(p_file,"lambda","double",1,lambda);
+get_param(p_file,"x_max","double",1,x_max);
+get_param(p_file,"level","long",1,level);
+get_param(p_file,"x_min","double",1,x_min);
+get_param(p_file,"z_min","double",1,z_min);
+get_param(p_file,"Nz","long",1,Nz);
+get_param(p_file,"steps","long",1,steps);
+get_param(p_file,"delx","double",1,delx);
+}
+
+int main(int argc, char **argv) {
+char pfile[64];
+strcpy(pfile,argv[1]);
+/* Initialization of Coordinate: */
+dim =2;
+read_params(pfile,&output_freq,&A,&delz,&z_max,&xc,&Nx,&idsigx,&zc,&myzero,&idsigz,&lambda,&x_max,&level,&x_min,&z_min,&Nz,&steps,&delx);
+
+Nx = Nx*(int)pow(2.0,(double)level)+1;
+steps = steps*(int)pow(2.0,(double)level);
+Nz = Nz*(int)pow(2.0,(double)level)+1;
+steps = steps*(int)pow(2.0,(double)level);
+/* Allocating Memory to Grid Functions: */
+x = vec_alloc(Nx);
+z = vec_alloc(Nz);
+n_f = vec_alloc(1*Nx*Nz);
+n_f_t = vec_alloc(1*Nx*Nz);
+nm1_f = vec_alloc(1*Nx*Nz);
+nm2_f = vec_alloc(1*Nx*Nz);
+np1_f = vec_alloc(1*Nx*Nz);
+np2_f = vec_alloc(1*Nx*Nz);
+hx = (x_max-x_min)/(Nx-1);
+dvumsh(x,Nx,x_min,x_max);
+hz = (z_max-z_min)/(Nz-1);
+dvumsh(z,Nz,z_min,z_max);
+ht = lambda*sqrt( 0.0+ hx*hx+ hz*hz);
+shape[0]=Nx;
+shape[1]=Nz;
+bbox[0]=x_min;
+bbox[1]=x_max;
+bbox[2]=z_min;
+bbox[3]=z_max;
+time=0.0;
+for (int i=0; i<steps; i++) {
+}
+}

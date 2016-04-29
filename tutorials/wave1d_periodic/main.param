@@ -1,0 +1,11 @@
+A:=1
+lambda:=0.3
+idsignum:=-0.0
+x_max:=1
+delx:=0.1
+level:=0
+x_min:=-1
+Nx:=1024
+steps:=4096
+output_freq:=16
+x0:=0

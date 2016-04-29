@@ -1,0 +1,12 @@
+output_freq:=256
+myzero:=0
+xmax:=1
+x_max:=1
+Nx:=128
+T0:=0
+steps:=25600
+T1:=1
+x_min:=0
+level:=0
+lambda:=0.3
+xmin:=0

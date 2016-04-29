@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>~/FD/examples/wave1d_peridoc/w1dpb.mpl.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="maple">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,expand_tabs,prevent_copy=">
+<meta name="colorscheme" content="peachpuff">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Comment { color: #8080ff; }
+.Constant { color: #ff6060; }
+.Special { color: #ff40ff; }
+.Statement { color: #ffff00; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Comment">#-------------------------------------------</span>
+<span class="Comment"># AAK:</span>
+<span class="Comment"># Sun Mar  9 23:04:06 PDT 2014</span>
+<span class="Comment"># Example of solving 1D wave equaiton using FD</span>
+<span class="Comment"># and implementing O(h^2) Cranck-Nickelson</span>
+<span class="Comment"># implicit finite differencing and periodic</span>
+<span class="Comment"># boundary condition</span>
+<span class="Comment">#----------------------------------------------</span>
+<span class="Statement">read</span> <span class="Constant">&quot;/d/bh8/home/arman/FD/FD.mpl&quot;</span><span class="Special">:</span>
+
+Clean_FD<span class="Special">()</span><span class="Special">;</span>
+Make_FD<span class="Special">()</span><span class="Special">;</span>
+
+grid_functions <span class="Special">:=</span> <span class="Special">{</span>f<span class="Special">,</span>f_t<span class="Special">}</span><span class="Special">;</span>
+
+eq1 <span class="Special">:=</span> <span class="Statement">diff</span><span class="Special">(</span>f<span class="Special">(</span>t<span class="Special">,</span>x<span class="Special">)</span><span class="Special">,</span>t<span class="Special">)</span> <span class="Statement">=</span> f_t<span class="Special">(</span>t<span class="Special">,</span>x<span class="Special">)</span><span class="Special">;</span>
+eq2 <span class="Special">:=</span> <span class="Statement">diff</span><span class="Special">(</span>f_t<span class="Special">(</span>t<span class="Special">,</span>x<span class="Special">)</span><span class="Special">,</span>t<span class="Special">)</span> <span class="Statement">=</span> <span class="Statement">diff</span><span class="Special">(</span>f<span class="Special">(</span>t<span class="Special">,</span>x<span class="Special">)</span><span class="Special">,</span>x<span class="Special">,</span>x<span class="Special">)</span><span class="Special">;</span>
+
+<span class="Comment">#Equivalent to second order PDE (wave equation)</span>
+eq3 <span class="Special">:=</span> <span class="Statement">diff</span><span class="Special">(</span>f<span class="Special">(</span>t<span class="Special">,</span>x<span class="Special">)</span><span class="Special">,</span>t<span class="Special">,</span>t<span class="Special">)</span> <span class="Statement">=</span> <span class="Statement">diff</span><span class="Special">(</span>f<span class="Special">(</span>t<span class="Special">,</span>x<span class="Special">)</span><span class="Special">,</span>x<span class="Special">,</span>x<span class="Special">)</span><span class="Special">;</span>
+
+<span class="Comment">#Independent Residual Evaluators (default: o(h^2) centered)</span>
+Gen_Res_Code<span class="Special">(</span><span class="Statement">lhs</span><span class="Special">(</span>eq3<span class="Special">)</span>-<span class="Statement">rhs</span><span class="Special">(</span>eq3<span class="Special">)</span><span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;c&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;ire_f&quot;</span><span class="Special">)</span><span class="Special">;</span>
+
+<span class="Comment">#Applying (default) second order finite differencing on </span>
+<span class="Comment">#spacial derivatives in the equations:</span>
+eq1_R_D <span class="Special">:=</span> Gen_Sten<span class="Special">(</span><span class="Statement">rhs</span><span class="Special">(</span>eq1<span class="Special">))</span><span class="Special">;</span>
+eq2_R_D <span class="Special">:=</span> Gen_Sten<span class="Special">(</span><span class="Statement">rhs</span><span class="Special">(</span>eq2<span class="Special">))</span><span class="Special">;</span>
+
+<span class="Comment"># Changing FD scheme to first order forward in time used</span>
+<span class="Comment"># in CN scheme:</span>
+FD_table<span class="Special">[</span>t<span class="Special">]</span> <span class="Special">:=</span> <span class="Special">[[</span><span class="Constant">0</span><span class="Special">]</span><span class="Special">,</span><span class="Special">[</span><span class="Constant">0</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">]]</span><span class="Special">;</span>
+eq1_L_D<span class="Special">:=</span>Gen_Sten<span class="Special">(</span><span class="Statement">lhs</span><span class="Special">(</span>eq1<span class="Special">))</span><span class="Special">;</span>
+eq2_L_D<span class="Special">:=</span>Gen_Sten<span class="Special">(</span><span class="Statement">lhs</span><span class="Special">(</span>eq2<span class="Special">))</span><span class="Special">;</span>
+
+<span class="Comment"># Creating averaging FD operator to create the second order</span>
+<span class="Comment"># scheme:</span>
+AVGT <span class="Special">:=</span> a -<span class="Statement">&gt;</span> <span class="Special">(</span>   FD<span class="Special">(</span> a<span class="Special">,</span><span class="Special">[</span> <span class="Special">[</span><span class="Constant">1</span><span class="Special">]</span><span class="Special">,</span><span class="Special">[</span><span class="Constant">0</span><span class="Special">]</span> <span class="Special">])</span> + FD<span class="Special">(</span> a<span class="Special">,</span><span class="Special">[</span> <span class="Special">[</span><span class="Constant">0</span><span class="Special">]</span><span class="Special">,</span><span class="Special">[</span><span class="Constant">0</span><span class="Special">]</span> <span class="Special">])</span> <span class="Special">)</span>/<span class="Constant">2</span><span class="Special">;</span>
+
+<span class="Comment">#FDA equivalent of PDE: (now second order Cranck-Nickelson)</span>
+eq1_D<span class="Special">:=</span> eq1_L_D - AVGT<span class="Special">(</span>eq1_R_D<span class="Special">)</span><span class="Special">;</span>
+eq2_D<span class="Special">:=</span> eq2_L_D - AVGT<span class="Special">(</span>eq2_R_D<span class="Special">)</span><span class="Special">;</span>
+
+<span class="Comment">#Making the FDA periodic at left and right boundarie:</span>
+eq1_D_lb<span class="Special">:=</span>FD_Periodic<span class="Special">(</span>eq1_D<span class="Special">,</span><span class="Special">{</span>i<span class="Statement">=</span><span class="Constant">1</span><span class="Special">})</span><span class="Special">;</span>
+eq1_D_rb<span class="Special">:=</span>FD_Periodic<span class="Special">(</span>eq1_D<span class="Special">,</span><span class="Special">{</span>i<span class="Statement">=</span>Nx<span class="Special">})</span><span class="Special">;</span>
+eq2_D_lb<span class="Special">:=</span>FD_Periodic<span class="Special">(</span>eq2_D<span class="Special">,</span><span class="Special">{</span>i<span class="Statement">=</span><span class="Constant">1</span><span class="Special">})</span><span class="Special">;</span>
+eq2_D_rb<span class="Special">:=</span>FD_Periodic<span class="Special">(</span>eq2_D<span class="Special">,</span><span class="Special">{</span>i<span class="Statement">=</span>Nx<span class="Special">})</span><span class="Special">;</span>
+
+<span class="Comment">#Initialization profiles:</span>
+init_f<span class="Special">:=</span>A*<span class="Statement">exp</span><span class="Special">(</span>-<span class="Special">(</span>x-x0<span class="Special">)</span>^<span class="Constant">2</span>/delx^<span class="Constant">2</span><span class="Special">)</span><span class="Special">;</span>
+init_f_t<span class="Special">:=</span>idsignum*<span class="Statement">diff</span><span class="Special">(</span>init_f<span class="Special">,</span>x<span class="Special">)</span><span class="Special">;</span>
+
+<span class="Comment">#Creating initializer subroutines:</span>
+Gen_Eval_Code<span class="Special">(</span>init_f<span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;c&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;init_f&quot;</span><span class="Special">)</span><span class="Special">;</span>
+Gen_Eval_Code<span class="Special">(</span>init_f_t<span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;c&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;init_f_t&quot;</span><span class="Special">)</span><span class="Special">;</span>
+
+<span class="Comment"># FDA specifier for boundaries and interior points:</span>
+s_f<span class="Special">:=</span> <span class="Special">[</span>
+  <span class="Special">{</span> i<span class="Statement">=</span><span class="Special">[</span><span class="Constant">1</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">]</span>     <span class="Special">}</span> <span class="Statement">=</span> eq1_D_lb <span class="Special">,</span>
+  <span class="Special">{</span> i<span class="Statement">=</span><span class="Special">[</span><span class="Constant">2</span><span class="Special">,</span>Nx<span class="Constant">-1</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">]</span>  <span class="Special">}</span> <span class="Statement">=</span> eq1_D<span class="Special">,</span>
+  <span class="Special">{</span> i<span class="Statement">=</span><span class="Special">[</span>Nx<span class="Special">,</span>Nx<span class="Special">,</span><span class="Constant">1</span><span class="Special">]</span>   <span class="Special">}</span> <span class="Statement">=</span> eq1_D_rb
+<span class="Special">]</span><span class="Special">;</span>
+
+s_f_t<span class="Special">:=</span> <span class="Special">[</span>
+  <span class="Special">{</span> i<span class="Statement">=</span><span class="Special">[</span><span class="Constant">1</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">]</span>     <span class="Special">}</span> <span class="Statement">=</span> eq2_D_lb <span class="Special">,</span>
+  <span class="Special">{</span> i<span class="Statement">=</span><span class="Special">[</span><span class="Constant">2</span><span class="Special">,</span>Nx<span class="Constant">-1</span><span class="Special">,</span><span class="Constant">1</span><span class="Special">]</span>  <span class="Special">}</span> <span class="Statement">=</span> eq2_D<span class="Special">,</span>
+  <span class="Special">{</span> i<span class="Statement">=</span><span class="Special">[</span>Nx<span class="Special">,</span>Nx<span class="Special">,</span><span class="Constant">1</span><span class="Special">]</span>   <span class="Special">}</span> <span class="Statement">=</span> eq2_D_rb
+<span class="Special">]</span><span class="Special">;</span>
+
+<span class="Comment">#Residual evaluators code for time update:</span>
+A_Gen_Res_Code<span class="Special">(</span>s_f<span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;d&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;res_f&quot;</span><span class="Special">,</span>is_periodic<span class="Statement">=</span><span class="Constant">true</span><span class="Special">)</span><span class="Special">;</span>
+A_Gen_Res_Code<span class="Special">(</span>s_f_t<span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;d&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;res_f_t&quot;</span><span class="Special">,</span>is_periodic<span class="Statement">=</span><span class="Constant">true</span><span class="Special">)</span><span class="Special">;</span>
+
+<span class="Comment">#1 Step Newton-Gauss-Sider solver code:</span>
+A_Gen_Solve_Code<span class="Special">(</span>s_f<span class="Special">,</span><span class="Special">{</span>f<span class="Special">(</span>n<span class="Constant">+1</span><span class="Special">,</span>i<span class="Special">)}</span><span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;d&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;u_f&quot;</span><span class="Special">,</span>is_periodic<span class="Statement">=</span><span class="Constant">true</span><span class="Special">)</span><span class="Special">;</span>
+A_Gen_Solve_Code<span class="Special">(</span>s_f_t<span class="Special">,</span><span class="Special">{</span>f_t<span class="Special">(</span>n<span class="Constant">+1</span><span class="Special">,</span>i<span class="Special">)}</span><span class="Special">,</span>input<span class="Statement">=</span><span class="Constant">&quot;d&quot;</span><span class="Special">,</span>proc_name<span class="Statement">=</span><span class="Constant">&quot;u_f_t&quot;</span><span class="Special">,</span>is_periodic<span class="Statement">=</span><span class="Constant">true</span><span class="Special">)</span><span class="Special">;</span>
+
+<span class="Comment"># See main.c for a simple driver</span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

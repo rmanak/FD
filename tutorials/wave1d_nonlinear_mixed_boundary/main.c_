@@ -1,0 +1,102 @@
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <bbhutil.h>
+#include <sdf_read.h>
+#include <init_f.h>
+#include <init_v.h>
+#include <ire_f.h>
+#include <res_f.h>
+#include <res_f_t.h>
+#include <u_f.h>
+#include <u_f_t.h>
+#include <init_f_t.h>
+/* Shapes: */
+int Nx;
+int shape[1];
+int dim;
+int level;
+/* Coordinates: */
+double *x;
+/* Grid Functions: */
+double *n_f;
+double *n_f_t;
+double *nm1_f;
+double *nm1_f_t;
+double *np1_f;
+double *np1_f_t;
+double *v;
+/* Parameters: */
+double A;
+double a;
+double b;
+double d;
+double delx;
+double ht;
+double myzero;
+double p;
+double vcons;
+double x0;
+double idsignum;
+/* Coordinate Parameters: */
+double x_max;
+double x_min;
+double hx;
+double bbox[2];
+int phys_bdy[2];
+/* Time Evolution Parameters: */
+int steps;
+int output_freq;
+double lambda;
+double time;
+void read_params(char *p_file,double *vcons,double *A,double *d,int *level,double *x_max,double *idsignum,double *a,double *p,double *myzero,int *steps,double *lambda,int *output_freq,double *b,double *x_min,double *delx,int *Nx,double *x0)
+{
+get_param(p_file,"vcons","double",1,vcons);
+get_param(p_file,"A","double",1,A);
+get_param(p_file,"d","double",1,d);
+get_param(p_file,"level","long",1,level);
+get_param(p_file,"x_max","double",1,x_max);
+get_param(p_file,"idsignum","double",1,idsignum);
+get_param(p_file,"a","double",1,a);
+get_param(p_file,"p","double",1,p);
+get_param(p_file,"myzero","double",1,myzero);
+get_param(p_file,"steps","long",1,steps);
+get_param(p_file,"lambda","double",1,lambda);
+get_param(p_file,"output_freq","long",1,output_freq);
+get_param(p_file,"b","double",1,b);
+get_param(p_file,"x_min","double",1,x_min);
+get_param(p_file,"delx","double",1,delx);
+get_param(p_file,"Nx","long",1,Nx);
+get_param(p_file,"x0","double",1,x0);
+}
+
+int main(int argc, char **argv) {
+char pfile[64];
+strcpy(pfile,argv[1]);
+/* Initialization of Coordinate: */
+dim =1;
+read_params(pfile,&vcons,&A,&d,&level,&x_max,&idsignum,&a,&p,&myzero,&steps,&lambda,&output_freq,&b,&x_min,&delx,&Nx,&x0);
+
+Nx = Nx*(int)pow(2.0,(double)level)+1;
+steps = steps*(int)pow(2.0,(double)level);
+/* Allocating Memory to Grid Functions: */
+x = vec_alloc(Nx);
+n_f = vec_alloc(1*Nx);
+n_f_t = vec_alloc(1*Nx);
+nm1_f = vec_alloc(1*Nx);
+nm1_f_t = vec_alloc(1*Nx);
+np1_f = vec_alloc(1*Nx);
+np1_f_t = vec_alloc(1*Nx);
+v = vec_alloc(1*Nx);
+hx = (x_max-x_min)/(Nx-1);
+dvumsh(x,Nx,x_min,x_max);
+ht = lambda*sqrt( 0.0+ hx*hx);
+shape[0]=Nx;
+bbox[0]=x_min;
+bbox[1]=x_max;
+time=0.0;
+int i;
+for (i=0; i<steps; i++) {
+}
+}

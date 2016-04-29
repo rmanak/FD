@@ -1,0 +1,13 @@
+lambda:=?
+x_min:=?
+x_max:=?
+steps:=?
+myzero:=?
+epsdis:=?
+idsignum:=?
+output_freq:=?
+level:=?
+A:=?
+Nx:=?
+delx:=?
+x0:=?

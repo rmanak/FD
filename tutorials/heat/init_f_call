@@ -1,0 +1,1 @@
+init_f_(x,&Nx,&T0,&T1,&xmax,&xmin,res);

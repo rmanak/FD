@@ -1,0 +1,4 @@
+      ra = -dble((lna(i) - lna(i + 1)) / hx) + (-0.1D1 + exp(dble(2 * ln
+     #a(i + 1))) + x(i + 1) ** 2 * exp(dble(2 * lna(i + 1))) * Ttt(i + 1
+     #)) / x(i + 1) / 0.4D1 + (-0.1D1 + exp(dble(2 * lna(i))) + x(i) ** 
+     #2 * exp(dble(2 * lna(i))) * Ttt(i)) / x(i) / 0.4D1

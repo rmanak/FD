@@ -1,0 +1,17 @@
+x_min:=-5.0
+d:=0.2
+A:=1.0
+delx:=0.5
+p:=0
+vcons:=0.7
+steps:=5000
+lambda:=0.05
+myzero:=0
+b:=0
+x_max:=5.0
+level:=3
+a:=0
+x0:= 3.0
+Nx:=256
+idsignum:=1
+output_freq:=16
