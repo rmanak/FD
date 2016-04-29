@@ -29,8 +29,8 @@ This software's homepage and extended tutorials/manual is here:
 Quick Dive into the Toolkit
 --------------------------
 See the following maple script that creates solver code for 1-D heat equation with fixed boundary
-conditions. FD is designed to be human readable and automates the finite Differencing process
-as much as possible while allowing full control over everything:
+conditions. FD is designed to be human readable and automates the finite differencing process
+as much as possible while allowing full control:
 
     read "../../FD.mpl": Clean_FD(); Make_FD();
     grid_functions := {f};
