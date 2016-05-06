@@ -1,0 +1,159 @@
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+.Special { color: #c000c0; }
+.Statement { color: #af5f00; }
+.Type { color: #008000; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.PreProc { color: #c000c0; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="PreProc">#include </span><span class="Constant">&lt;stdlib.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;sdf_read.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;stdio.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;math.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;u_f.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;init_f.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;u_f_t.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;init_f_t.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;res_f.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;res_f_t.h&gt;</span>
+<span class="PreProc">#include </span><span class="Constant">&lt;ire_f.h&gt;</span>
+<span class="Comment">/*</span><span class="Comment"> Shapes: </span><span class="Comment">*/</span>
+<span class="Type">int</span> Nx;
+<span class="Type">int</span> shape[<span class="Constant">1</span>];
+<span class="Type">int</span> dim;
+<span class="Type">int</span> level;
+<span class="Comment">/*</span><span class="Comment"> Coordinates: </span><span class="Comment">*/</span>
+<span class="Type">double</span> *x;
+<span class="Comment">/*</span><span class="Comment"> Grid Functions: </span><span class="Comment">*/</span>
+<span class="Type">double</span> *n_f;
+<span class="Type">double</span> *n_f_t;
+<span class="Type">double</span> *np1_f;
+<span class="Type">double</span> *np1_f_t;
+<span class="Type">double</span> *nm1_f;
+<span class="Comment">/*</span><span class="Comment"> Parameters: </span><span class="Comment">*/</span>
+<span class="Type">double</span> A;
+<span class="Type">double</span> tot_res;
+<span class="Type">double</span> ht;
+<span class="Type">double</span> x0;
+<span class="Type">double</span> delx;
+<span class="Type">double</span> init_v;
+<span class="Type">double</span> idsignum;
+<span class="Type">double</span> res_f,res_f_t;
+<span class="Type">double</span> ire_f;
+<span class="Comment">/*</span><span class="Comment"> Coordinate Parameters: </span><span class="Comment">*/</span>
+<span class="Type">double</span> x_max;
+<span class="Type">double</span> x_min;
+<span class="Type">double</span> hx;
+<span class="Type">double</span> bbox[<span class="Constant">2</span>];
+<span class="Type">int</span> phys_bdy[<span class="Constant">4</span>];
+<span class="Comment">/*</span><span class="Comment"> Time Evolution Parameters: </span><span class="Comment">*/</span>
+<span class="Type">int</span> steps;
+<span class="Type">double</span> lambda;
+<span class="Type">double</span> time;
+<span class="Type">int</span> output_freq;
+<span class="Type">void</span> swap_levels(<span class="Type">double</span> **a, <span class="Type">double</span> **b) {
+     <span class="Type">double</span> *t;
+     t = *a;
+     *a = *b;
+     *b = t;
+}
+
+<span class="Type">void</span> set_cons(<span class="Type">double</span> *f, <span class="Type">int</span> N, <span class="Type">double</span> c) {
+       <span class="Type">int</span> i;
+           <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;N;i++) f[i] = c;
+}
+
+<span class="Type">void</span> copy_lev(<span class="Type">double</span> **a, <span class="Type">double</span> **b) {
+       *b = *a;
+}
+
+
+<span class="Type">void</span> read_params(<span class="Type">char</span> *p_file,<span class="Type">double</span> *A,<span class="Type">double</span> *x_min,<span class="Type">double</span> *lambda,<span class="Type">double</span> *idsignum,<span class="Type">double</span> *init_v,<span class="Type">double</span> *delx,<span class="Type">int</span> *level,<span class="Type">double</span> *x_max,<span class="Type">int</span> *Nx,<span class="Type">int</span> *steps,<span class="Type">double</span> *x0,<span class="Type">int</span> *output_freq)
+{
+get_param(p_file,<span class="Constant">&quot;A&quot;</span>,<span class="Constant">&quot;double&quot;</span>,<span class="Constant">1</span>,A);
+get_param(p_file,<span class="Constant">&quot;x_min&quot;</span>,<span class="Constant">&quot;double&quot;</span>,<span class="Constant">1</span>,x_min);
+get_param(p_file,<span class="Constant">&quot;lambda&quot;</span>,<span class="Constant">&quot;double&quot;</span>,<span class="Constant">1</span>,lambda);
+get_param(p_file,<span class="Constant">&quot;idsignum&quot;</span>,<span class="Constant">&quot;double&quot;</span>,<span class="Constant">1</span>,idsignum);
+get_param(p_file,<span class="Constant">&quot;init_v&quot;</span>,<span class="Constant">&quot;double&quot;</span>,<span class="Constant">1</span>,init_v);
+get_param(p_file,<span class="Constant">&quot;delx&quot;</span>,<span class="Constant">&quot;double&quot;</span>,<span class="Constant">1</span>,delx);
+get_param(p_file,<span class="Constant">&quot;level&quot;</span>,<span class="Constant">&quot;long&quot;</span>,<span class="Constant">1</span>,level);
+get_param(p_file,<span class="Constant">&quot;x_max&quot;</span>,<span class="Constant">&quot;double&quot;</span>,<span class="Constant">1</span>,x_max);
+get_param(p_file,<span class="Constant">&quot;Nx&quot;</span>,<span class="Constant">&quot;long&quot;</span>,<span class="Constant">1</span>,Nx);
+get_param(p_file,<span class="Constant">&quot;steps&quot;</span>,<span class="Constant">&quot;long&quot;</span>,<span class="Constant">1</span>,steps);
+get_param(p_file,<span class="Constant">&quot;x0&quot;</span>,<span class="Constant">&quot;double&quot;</span>,<span class="Constant">1</span>,x0);
+get_param(p_file,<span class="Constant">&quot;output_freq&quot;</span>,<span class="Constant">&quot;long&quot;</span>,<span class="Constant">1</span>,output_freq);
+}
+
+<span class="Type">int</span> main(<span class="Type">int</span> argc, <span class="Type">char</span> **argv) {
+<span class="Type">char</span> pfile[<span class="Constant">64</span>];
+<span class="Type">int</span> j;
+strcpy(pfile,argv[<span class="Constant">1</span>]);
+<span class="Comment">/*</span><span class="Comment"> Initialization of Coordinate: </span><span class="Comment">*/</span>
+dim =<span class="Constant">1</span>;
+read_params(pfile,&amp;A,&amp;x_min,&amp;lambda,&amp;idsignum,&amp;init_v,&amp;delx,&amp;level,&amp;x_max,&amp;Nx,&amp;steps,&amp;x0,&amp;output_freq);
+
+Nx = Nx*(<span class="Type">int</span>)pow(<span class="Constant">2.0</span>,(<span class="Type">double</span>)level)+<span class="Constant">1</span>;
+steps = steps*(<span class="Type">int</span>)pow(<span class="Constant">2.0</span>,(<span class="Type">double</span>)level);
+<span class="Comment">/*</span><span class="Comment"> Allocating Memory to Grid Functions: </span><span class="Comment">*/</span>
+x = vec_alloc(Nx);
+n_f = vec_alloc(<span class="Constant">1</span>*Nx);
+n_f_t = vec_alloc(<span class="Constant">1</span>*Nx);
+np1_f = vec_alloc(<span class="Constant">1</span>*Nx);
+np1_f_t = vec_alloc(<span class="Constant">1</span>*Nx);
+nm1_f = vec_alloc(Nx);
+hx = (x_max-x_min)/(Nx-<span class="Constant">1</span>);
+dvumsh(x,Nx,x_min,x_max);
+ht = lambda*sqrt( <span class="Constant">0.0</span>+ hx*hx);
+shape[<span class="Constant">0</span>]=Nx;
+bbox[<span class="Constant">0</span>]=x_min;
+bbox[<span class="Constant">1</span>]=x_max;
+time=<span class="Constant">0.0</span>;
+init_f_(x,&amp;Nx,&amp;A,&amp;delx,&amp;x0,n_f);
+init_f_(x,&amp;Nx,&amp;A,&amp;delx,&amp;x0,np1_f);
+init_f_t_(x,&amp;Nx,&amp;A,&amp;delx,&amp;idsignum,&amp;x0,n_f_t);
+init_f_t_(x,&amp;Nx,&amp;A,&amp;delx,&amp;idsignum,&amp;x0,np1_f_t);
+
+phys_bdy[<span class="Constant">0</span>] = <span class="Constant">1</span>;
+phys_bdy[<span class="Constant">1</span>] = <span class="Constant">1</span>;
+
+gft_out_bbox(<span class="Constant">&quot;f.sdf&quot;</span>,time,shape,dim,bbox,np1_f);
+gft_out_bbox(<span class="Constant">&quot;f_t.sdf&quot;</span>,time,shape,dim,bbox,np1_f_t);
+printf(<span class="Constant">&quot;step: </span><span class="Special">%d</span><span class="Constant"> time: </span><span class="Special">%f</span><span class="Constant"> iter: </span><span class="Special">%d</span><span class="Constant"> res: </span><span class="Special">%1.14e</span><span class="Constant"> ire: </span><span class="Special">%1.14e</span><span class="Special">\n</span><span class="Constant">&quot;</span>,<span class="Constant">0</span>,time,<span class="Constant">0</span>,<span class="Constant">0.0</span>,<span class="Constant">0.0</span>);
+
+
+<span class="Type">int</span> i;
+<span class="Statement">for</span> (i=<span class="Constant">0</span>; i&lt;steps; i++) {
+  j=<span class="Constant">0</span>;
+  tot_res = <span class="Constant">1.0</span>;
+  ire_f = <span class="Constant">0</span>;
+  <span class="Statement">while</span> (tot_res &gt; <span class="Constant">1.0e-9</span>) {
+      u_f_(n_f,n_f_t,np1_f,np1_f_t,&amp;Nx,&amp;ht,phys_bdy,np1_f);
+      u_f_t_(n_f,n_f_t,np1_f,np1_f_t,&amp;Nx,&amp;ht,&amp;hx,phys_bdy,np1_f_t);
+      res_f_(n_f,n_f_t,np1_f,np1_f_t,&amp;Nx,&amp;ht,phys_bdy,&amp;res_f);
+      res_f_t_(n_f,n_f_t,np1_f,np1_f_t,&amp;Nx,&amp;ht,&amp;hx,phys_bdy,&amp;res_f_t);
+        tot_res=res_f/l2norm(Nx,np1_f) + res_f_t/l2norm(Nx,np1_f_t);
+        j++;
+      }
+   <span class="Statement">if</span> (i&gt;<span class="Constant">1</span>) {
+     ire_f_(n_f,nm1_f,np1_f,&amp;Nx,&amp;ht,&amp;hx,&amp;ire_f);
+    }
+   time = time + ht;
+    <span class="Statement">if</span> ((i + <span class="Constant">1</span>) % (output_freq*(<span class="Type">int</span>)pow(<span class="Constant">2.0</span>,(<span class="Type">double</span>)level))  == <span class="Constant">0</span>) {
+      gft_out_bbox(<span class="Constant">&quot;f.sdf&quot;</span>,time,shape,dim,bbox,np1_f);
+      gft_out_bbox(<span class="Constant">&quot;f_t.sdf&quot;</span>,time,shape,dim,bbox,np1_f_t);
+      printf(<span class="Constant">&quot;step: </span><span class="Special">%d</span><span class="Constant"> time: </span><span class="Special">%f</span><span class="Constant"> iter: </span><span class="Special">%d</span><span class="Constant"> res: </span><span class="Special">%1.14e</span><span class="Constant"> ire: </span><span class="Special">%1.14e</span><span class="Special">\n</span><span class="Constant">&quot;</span>,i+<span class="Constant">1</span>,time,j,tot_res,ire_f);
+    }
+    rdvcpy(nm1_f,n_f,Nx);
+    swap_levels(&amp;np1_f,&amp;n_f);
+    swap_levels(&amp;np1_f_t,&amp;n_f_t);
+}
+gft_close_all();
+}
+</pre>

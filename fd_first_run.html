@@ -1,0 +1,228 @@
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>read "FD.mpl":</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>MFD():</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Warning,%20grid_functions%20is%20not%20assigned"></u></font><font color="#0000ff" size="3" face="Courier New"><u>Warning, grid_functions is not assigned</u></font></a></td>
+</tr>&nbsp;</p>
+<p align="left"><tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>grid_functions:={f}:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>expr:=diff(f(x),x,x);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_1.gif" width="105" height="34" alt="diff(diff(f(x), x), x)" align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>A:=Gen_Sten(expr);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_2.gif" width="195" height="32" alt="`/`(`*`(`+`(f(`+`(i, `-`(1))), `-`(`*`(2, `*`(f(i)))), f(`+`(i, 1)))), `*`(`^`(hx, 2)))" align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>B := DtoC(A);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_3.gif" width="215" height="32" alt="`/`(`*`(`+`(f(`+`(x, `-`(hx))), `-`(`*`(2, `*`(f(x)))), f(`+`(x, hx)))), `*`(`^`(hx, 2)))" align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>B:=convert(series(B,hx),polynom);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_4.gif" width="215" height="30" alt="`+`(((`@@`(D, 2))(f))(x), `*`(`/`(1, 12), `*`(((`@@`(D, 4))(f))(x), `*`(`^`(hx, 2)))))" align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>test_resid := simplify(eval(B-expr,{hx=0}));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_5.gif" width="86" height="14" alt="0" align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Computing df(t,x,y)/dtdx^2 using 2nd order forward in time and</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">centered in x scheme:</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Update_FD_Table(2, table([ t=[0,-1],x=[-1,-1],y=[-1,-1],z=[-1,-1] ]) );</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>expr:=diff(f(t,x,y),t,x,x);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_6.gif" width="142" height="31" alt="diff(diff(diff(f(t, x, y), t), x), x)" align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>A:=Gen_Sten(expr);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_7.gif" width="576" height="32" alt="`+`(`-`(`/`(`*`(`/`(1, 2), `*`(`+`(`*`(3, `*`(f(n, `+`(i, `-`(1)), j))), `-`(`*`(6, `*`(f(n, i, j)))), `*`(3, `*`(f(n, `+`(i, 1), j))), `-`(`*`(4, `*`(f(`+`(n, 1), `+`(i, `-`(1)), j)))), `*`(8, `*`(f(..." align="center" border="0"><br><img src="fd_images2/fd_first_run_8.gif" width="576" height="14" alt="`+`(`-`(`/`(`*`(`/`(1, 2), `*`(`+`(`*`(3, `*`(f(n, `+`(i, `-`(1)), j))), `-`(`*`(6, `*`(f(n, i, j)))), `*`(3, `*`(f(n, `+`(i, 1), j))), `-`(`*`(4, `*`(f(`+`(n, 1), `+`(i, `-`(1)), j)))), `*`(8, `*`(f(..." align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>B := DtoC(A);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_9.gif" width="576" height="32" alt="`+`(`-`(`/`(`*`(`/`(1, 2), `*`(`+`(`*`(3, `*`(f(t, `+`(x, `-`(hx)), y))), `-`(`*`(6, `*`(f(t, x, y)))), `*`(3, `*`(f(t, `+`(x, hx), y))), `-`(`*`(4, `*`(f(`+`(t, ht), `+`(x, `-`(hx)), y)))), `*`(8, `*..." align="center" border="0"><br><img src="fd_images2/fd_first_run_10.gif" width="576" height="14" alt="`+`(`-`(`/`(`*`(`/`(1, 2), `*`(`+`(`*`(3, `*`(f(t, `+`(x, `-`(hx)), y))), `-`(`*`(6, `*`(f(t, x, y)))), `*`(3, `*`(f(t, `+`(x, hx), y))), `-`(`*`(4, `*`(f(`+`(t, ht), `+`(x, `-`(hx)), y)))), `*`(8, `*..." align="center" border="0"><br><img src="fd_images2/fd_first_run_11.gif" width="576" height="14" alt="`+`(`-`(`/`(`*`(`/`(1, 2), `*`(`+`(`*`(3, `*`(f(t, `+`(x, `-`(hx)), y))), `-`(`*`(6, `*`(f(t, x, y)))), `*`(3, `*`(f(t, `+`(x, hx), y))), `-`(`*`(4, `*`(f(`+`(t, ht), `+`(x, `-`(hx)), y)))), `*`(8, `*..." align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>stps:=[ht,hx]:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>for ii from 1 to nops(stps) do</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong> &nbsp;&nbsp;B:=convert(series(B,stps[ii],4),polynom):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>end do:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>B;</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_12.gif" width="275" height="30" alt="`+`((D[1, 2, 2](f))(t, x, y), `-`(`*`(`/`(1, 3), `*`((D[1, 1, 1, 2, 2](f))(t, x, y), `*`(`^`(ht, 2))))))" align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>test_resid := simplify(eval(B-expr,{ht=0,hx=0,hy=0}));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images2/fd_first_run_13.gif" width="86" height="14" alt="0" align="center" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+list=`ls *example.html`
+
+for i in $list; do
+	#sed 's/center/left/g' <  $i  > ${i}.2
+	mv -f ${i}.2 ${i} 
+done;

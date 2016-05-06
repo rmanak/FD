@@ -1,0 +1,7 @@
+# Download
+You can download the FD package from [[here[dl]]](FD.tar.gz), or execute
+the following commands in shell:
+
+	wget http://laplace.phas.ubc.ca/People/arman/FD_doc/FD.tar.gz
+
+title:={Finite Difference Method in Maple}

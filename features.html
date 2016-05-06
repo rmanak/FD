@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="FD: Finite Differencing Toolkit in Maple" />
+<meta name="keywords" content="finite difference, maple, toolkit, finite difference method, finite differencing, discretizing, discretize, discrete,finite, difference, approximation, finite difference approximation, stencil" />
+<meta name="author" content="Arman Akbarian" />
+<link rel="stylesheet" type="text/css" href="pagestyle.css" />
+<title>Finite Difference Method in Maple</title>
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+<body>
+<div class="page">
+  <div class="page2">
+     <div style="width:100%;height:1px;font-family: Tahoma; font-size: 1pt;"></div>
+     <div  class ="header">
+	     <div class="title">
+
+			<img src="img/fd2.png" height="auto" width=430px" style="float:right" />
+			<img src="img/logo.gif" height="110px" width="auto" style="float:right" />
+			FD: Finite Difference Toolkit in Maple
+
+
+		      <div style="clear: both; height:1px;"></div>
+	</div> <!-- End of title -->
+		
+     </div> <!-- end header -->
+	
+     <!--This line is for future use -->   <div style="text-align:center; padding-top:10px; padding-bottom:10px;"></div>
+	      
+     <!--This line is for compatibility issues --> <div style="width:100%;height:5px;font-family: Tahoma; font-size: 1pt;"></div>
+     <!--in class page2 -->
+     <div class="postandside">
+        <div class="content">
+            <div class="post">
+              <h1>Features</h1>
+
+<ul>
+<li>Provides a simple syntactic language to specify a PDE and its boundary
+conditions over a discretized numerical domain (Using a derived Maple
+data structure: <em>Discrete Domain Specifier</em> <code>DDS</code>)</li>
+<li>Creates Fortran routines and C wrappers for a given <code>DDS</code> that 
+can evaluate an FDA expression or solve it
+using Newton-Gauss-Seidel iterative method (commonly used for non-linear PDEs)</li>
+<li>Allows user specified discretization scheme such as 
+forward, backward, centered or asymmetric discretization 
+with used-defined accuracy via a data type (Maple table): <em>Finite Difference Specifier</em>, <code>FDS</code>.</li>
+<li>Can handle various boundary conditions such as periodic boundary, inner
+boundary conditions (imposing specific symmetry on the functions such as
+even or odd behaviour on axis/point of symmetry) or other types of user
+specified conditions, such as particular asymptotic behaviour, 
+outgoing (Neumann), fixed (Dirichlet), etc.</li>
+<li>Generates finite difference approximation of an arbitrary partial differential 
+expression of up to 4 variables, <code>f(t,x,y,z)</code>, for a used defined accuracy
+and discretization scheme.</li>
+<li>Creates <em>parallel ready</em> Fortran routine that can interface with  parallelization 
+infrastructures such as PAMR</li>
+<li>Can parse a given continuum algebraic/differential expression and can convert it directly to a
+Fortran routine to evaluate it on the discretized domain. Doing so, it 
+provides a rapid prototyping language to create residual evaluators for
+a given differential expression for testing purposes.</li>
+<li>Allows manual overwrite of discretization scheme by creating 
+<em>Manual Finite Difference Operators</em> defined via the built-in fundamental <em>difference</em>
+operator. </li>
+<li>Mainly designed with a focus on highly complex and non-linear time dependent PDEs 
+or boundary value PDEs that occur in physical systems.</li>
+<li>It is written in Maple, a powerful symbolic manipulation language and
+therefore inherits all the capabilities of Maple, including various tools
+to deal with PDEs and algebraic expressions.</li>
+<li>It was originally developed in <a href="http://laplace.phas.ubc.ca">Numerical Relativity
+group <img style="margin-left:1px;" src="img/external-link.svg" alt="" align="bottom" /></a> in UBC to solve the Einstein's equation which
+is a set of 10 highly non-linear coupled PDEs, where even writing down the
+equations in their continuum form needs to be done using symbolic
+manipulation software such as <a href="http://grtensor.phy.queensu.ca">GRTensor <img style="margin-left:1px;" src="img/external-link.svg" alt="" align="bottom" /></a>.
+Therefore it is mostly developed to deal with large differential expressions 
+that are machine generated and carries a full explicit form with all the 
+dependencies and derivatives written in Maple's canonical form like:
+<code>diff(f(t,x,y),x,x)+g(x,y)+diff(g(x,y),y,y,y)+...</code></li>
+<li>Being a Maple toolbox, FD unifies the two parts 
+of: (1)deriving and manipulating the set of PDEs
+with all the required work variables, and (2) converting them 
+into FDA expression and solving them. This can further help to reduce potential human errors.</li>
+</ul>
+
+<p>
+
+ 
+</p>
+
+		      <div style="clear: both;"></div>
+	         </div>
+		      <hr />
+				<div class ="date">last update:   , </div>
+	    <div class="footer">
+           <p><a href="about.html">About</a>|
+<a href="features.html">Features</a>|
+<a href="download.html">Download</a>|
+<a href="install.html">Installation</a>|
+<a href="start.html">Getting Started</a>|
+<a href="tutorials.html">Tutorials</a>|
+<a href="manual.html">Manual</a>|
+<a href="references.html">References</a></p>
+
+      </div>  
+	    <div style="clear: both;">&nbsp;</div>
+        </div> <!-- end content -->
+	<!-- in class postandside -->
+
+        <div class="sidebar">
+         	<div class="sider">
+               <p><a href="about.html">About</a>
+<a href="features.html">Features</a>
+<a href="download.html">Download</a>
+<a href="install.html">Installation</a>
+<a href="start.html">Getting Started</a>
+<a href="tutorials.html">Tutorials</a>
+<a href="manual.html">Manual</a>
+<a href="references.html">References</a>
+<a href="FD.mpl.html">Source Code</a></p>
+
+             </div>
+         </div> <!--End of Sidebar -->
+
+         <!--in class postandside-->   
+         <!--this line is for compatibility issues --><div style="clear: both;">&#160;</div> <!--Displacement --> 
+     </div> <!--End of post and side -->
+
+     <!-- in class page2 -->
+     <div style="clear: both;">&nbsp;</div>
+  </div> <!--End of Page2 -->
+     <div style="clear: both;">&nbsp;</div>
+
+</div> <!-- End of page -->
+<!--this is end of the file -->
+<!-- ~~~ This content is generated using sg web template ~~-->
+<!-- ~~~ For more information visit: http://laplace.physics.ubc.ca/People/arman/sg ~~ -->
+</body>
+</html>

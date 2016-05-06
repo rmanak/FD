@@ -1,0 +1,20 @@
+#Installation
+
+There is indeed nothing to install, you can simply download
+the FD package from [[here[dl]]](./FD.tar.gz), extract the files, and 
+read the ``FD.mpl`` file in your maple worksheet:
+
+	read("/your/path/to/FD.mpl");
+
+Here is a series of shell commands that would download and extract the package and
+execute the first FD script:
+
+	wget http://laplace.phas.ubc.ca/People/arman/FD_doc/FD.tar.gz
+	tar -xvf FD.tar.gz
+	cd FD
+	maple < fd_first_run.mpl
+
+See the section [gettin started](start.html) regarding the last command
+that executes the first FD script.
+
+title:={Finite Difference Method in Maple}

@@ -1,0 +1,99 @@
+
+<style type="text/css">
+<!--
+.Comment { color: #808080; font-weight: bold; }
+.Constant { color: #ff6060; }
+.Special { color: #ff40ff; }
+.Statement { color: #2222aa; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+<pre id='vimCodeElement'>
+<span class="Special">[</span>arman@bh8 ~/FD<span class="Special">]</span><span class="Statement">$</span> maple <span class="Statement">&lt;</span> fd_first_run<span class="Statement">.</span>mpl
+<span class="Statement">&gt;</span> <span class="Statement">read</span> <span class="Constant">&quot;FD.mpl&quot;</span><span class="Special">:</span>
+<span class="Statement">&gt;</span> Make_FD<span class="Special">()</span><span class="Special">;</span>
+                                       FD_on <span class="Statement">=</span> <span class="Constant">1</span>
+
+<span class="Statement">&gt;</span> grid_functions <span class="Special">:=</span> <span class="Special">{</span>f<span class="Special">}</span><span class="Special">;</span>
+                                 grid_functions <span class="Special">:=</span> <span class="Special">{</span>f<span class="Special">}</span>
+
+<span class="Statement">&gt;</span>
+<span class="Statement">&gt;</span> expr<span class="Special">:=</span><span class="Statement">diff</span><span class="Special">(</span>f<span class="Special">(</span>x<span class="Special">)</span><span class="Special">,</span>x<span class="Special">,</span>x<span class="Special">)</span><span class="Special">;</span>
+                                             <span class="Constant">2</span>
+                                            d
+                                    expr <span class="Special">:=</span> --- f<span class="Special">(</span>x<span class="Special">)</span>
+                                              <span class="Constant">2</span>
+                                            dx
+
+<span class="Statement">&gt;</span> A<span class="Special">:=</span>Gen_Sten<span class="Special">(</span>expr<span class="Special">)</span><span class="Special">;</span>
+                                f<span class="Special">(</span>i - <span class="Constant">1</span><span class="Special">)</span> - <span class="Constant">2</span> f<span class="Special">(</span>i<span class="Special">)</span> + f<span class="Special">(</span>i + <span class="Constant">1</span><span class="Special">)</span>
+                           A <span class="Special">:=</span> ----------------------------
+                                              <span class="Constant">2</span>
+                                            hx
+
+<span class="Statement">&gt;</span> B <span class="Special">:=</span> DtoC<span class="Special">(</span>A<span class="Special">)</span><span class="Special">;</span>
+                               f<span class="Special">(</span>x - hx<span class="Special">)</span> - <span class="Constant">2</span> f<span class="Special">(</span>x<span class="Special">)</span> + f<span class="Special">(</span>x + hx<span class="Special">)</span>
+                          B <span class="Special">:=</span> ------------------------------
+                                              <span class="Constant">2</span>
+                                            hx
+
+<span class="Statement">&gt;</span> B<span class="Special">:=</span><span class="Statement">convert</span><span class="Special">(</span><span class="Statement">series</span><span class="Special">(</span>B<span class="Special">,</span>hx<span class="Special">)</span><span class="Special">,</span><span class="Statement">polynom</span><span class="Special">)</span><span class="Special">;</span>
+                              <span class="Special">(</span><span class="Constant">2</span><span class="Special">)</span>                 <span class="Special">(</span><span class="Constant">4</span><span class="Special">)</span>          <span class="Constant">2</span>
+                       B <span class="Special">:=</span> <span class="Special">(</span><span class="Statement">D</span>   <span class="Special">)(</span>f<span class="Special">)(</span>x<span class="Special">)</span> + <span class="Constant">1</span>/<span class="Constant">12</span> <span class="Special">(</span><span class="Statement">D</span>   <span class="Special">)(</span>f<span class="Special">)(</span>x<span class="Special">)</span> hx
+
+<span class="Statement">&gt;</span> test_resid <span class="Special">:=</span> <span class="Statement">simplify</span><span class="Special">(</span><span class="Statement">eval</span><span class="Special">(</span>B-expr<span class="Special">,</span><span class="Special">{</span>hx<span class="Statement">=</span><span class="Constant">0</span><span class="Special">}))</span><span class="Special">;</span>
+                                    test_resid <span class="Special">:=</span> <span class="Constant">0</span>
+
+<span class="Statement">&gt;</span>
+<span class="Comment"># Computing df(t,x,y)/dtdx^2 using 2nd order forward in time and                         </span>
+<span class="Comment"># centered in x scheme:                                                                  </span>
+<span class="Statement">&gt;</span> Update_FD_Table<span class="Special">(</span><span class="Constant">2</span><span class="Special">,</span> <span class="Statement">table</span><span class="Special">([</span> t<span class="Statement">=</span><span class="Special">[</span><span class="Constant">0</span><span class="Special">,</span><span class="Constant">-1</span><span class="Special">]</span><span class="Special">,</span>x<span class="Statement">=</span><span class="Special">[</span><span class="Constant">-1</span><span class="Special">,</span><span class="Constant">-1</span><span class="Special">]</span><span class="Special">,</span>y<span class="Statement">=</span><span class="Special">[</span><span class="Constant">-1</span><span class="Special">,</span><span class="Constant">-1</span><span class="Special">]</span><span class="Special">,</span>z<span class="Statement">=</span><span class="Special">[</span><span class="Constant">-1</span><span class="Special">,</span><span class="Constant">-1</span><span class="Special">]</span> <span class="Special">])</span> <span class="Special">)</span><span class="Special">;</span>
+                    <span class="Constant">&quot;FD table updated, see the content using SFDT()&quot;</span>
+
+<span class="Statement">&gt;</span>
+<span class="Statement">&gt;</span> expr<span class="Special">:=</span><span class="Statement">diff</span><span class="Special">(</span>f<span class="Special">(</span>t<span class="Special">,</span>x<span class="Special">,</span>y<span class="Special">)</span><span class="Special">,</span>t<span class="Special">,</span>x<span class="Special">,</span>x<span class="Special">)</span><span class="Special">;</span>
+                                          <span class="Constant">3</span>
+                                         d
+                               expr <span class="Special">:=</span> ------ f<span class="Special">(</span>t<span class="Special">,</span> x<span class="Special">,</span> y<span class="Special">)</span>
+                                         <span class="Constant">2</span>
+                                       dx  dt
+
+<span class="Statement">&gt;</span> A<span class="Special">:=</span>Gen_Sten<span class="Special">(</span>expr<span class="Special">)</span><span class="Special">;</span>
+A <span class="Special">:=</span> <span class="Constant">-1</span>/<span class="Constant">2</span> <span class="Special">(</span><span class="Constant">3</span> f<span class="Special">(</span>n<span class="Special">,</span> i - <span class="Constant">1</span><span class="Special">,</span> j<span class="Special">)</span> - <span class="Constant">6</span> f<span class="Special">(</span>n<span class="Special">,</span> i<span class="Special">,</span> j<span class="Special">)</span> + <span class="Constant">3</span> f<span class="Special">(</span>n<span class="Special">,</span> i + <span class="Constant">1</span><span class="Special">,</span> j<span class="Special">)</span> - <span class="Constant">4</span> f<span class="Special">(</span>n + <span class="Constant">1</span><span class="Special">,</span> i - <span class="Constant">1</span><span class="Special">,</span> j<span class="Special">)</span>
+
+     + <span class="Constant">8</span> f<span class="Special">(</span>n + <span class="Constant">1</span><span class="Special">,</span> i<span class="Special">,</span> j<span class="Special">)</span> - <span class="Constant">4</span> f<span class="Special">(</span>n + <span class="Constant">1</span><span class="Special">,</span> i + <span class="Constant">1</span><span class="Special">,</span> j<span class="Special">)</span> + f<span class="Special">(</span>n + <span class="Constant">2</span><span class="Special">,</span> i - <span class="Constant">1</span><span class="Special">,</span> j<span class="Special">)</span> - <span class="Constant">2</span> f<span class="Special">(</span>n + <span class="Constant">2</span><span class="Special">,</span> i<span class="Special">,</span> j<span class="Special">)</span>
+
+                              <span class="Constant">2</span>
+     + f<span class="Special">(</span>n + <span class="Constant">2</span><span class="Special">,</span> i + <span class="Constant">1</span><span class="Special">,</span> j<span class="Special">))</span>/<span class="Special">(</span>hx  ht<span class="Special">)</span>
+
+<span class="Statement">&gt;</span> stps<span class="Special">:=</span><span class="Special">[</span>ht<span class="Special">,</span>hx<span class="Special">]</span><span class="Special">:</span>
+<span class="Statement">&gt;</span> B <span class="Special">:=</span> DtoC<span class="Special">(</span>A<span class="Special">)</span><span class="Special">;</span>
+B <span class="Special">:=</span> <span class="Constant">-1</span>/<span class="Constant">2</span> <span class="Special">(</span><span class="Constant">3</span> f<span class="Special">(</span>t<span class="Special">,</span> x - hx<span class="Special">,</span> y<span class="Special">)</span> - <span class="Constant">6</span> f<span class="Special">(</span>t<span class="Special">,</span> x<span class="Special">,</span> y<span class="Special">)</span> + <span class="Constant">3</span> f<span class="Special">(</span>t<span class="Special">,</span> x + hx<span class="Special">,</span> y<span class="Special">)</span>
+
+     - <span class="Constant">4</span> f<span class="Special">(</span>t + ht<span class="Special">,</span> x - hx<span class="Special">,</span> y<span class="Special">)</span> + <span class="Constant">8</span> f<span class="Special">(</span>t + ht<span class="Special">,</span> x<span class="Special">,</span> y<span class="Special">)</span> - <span class="Constant">4</span> f<span class="Special">(</span>t + ht<span class="Special">,</span> x + hx<span class="Special">,</span> y<span class="Special">)</span>
+
+                                                                                 <span class="Constant">2</span>
+     + f<span class="Special">(</span>t + <span class="Constant">2</span> ht<span class="Special">,</span> x - hx<span class="Special">,</span> y<span class="Special">)</span> - <span class="Constant">2</span> f<span class="Special">(</span>t + <span class="Constant">2</span> ht<span class="Special">,</span> x<span class="Special">,</span> y<span class="Special">)</span> + f<span class="Special">(</span>t + <span class="Constant">2</span> ht<span class="Special">,</span> x + hx<span class="Special">,</span> y<span class="Special">))</span>/<span class="Special">(</span>hx  ht<span class="Special">)</span>
+
+<span class="Statement">&gt;</span> <span class="Statement">for</span> ii <span class="Statement">from</span> <span class="Constant">1</span> <span class="Statement">to</span> <span class="Statement">nops</span><span class="Special">(</span>stps<span class="Special">)</span> <span class="Statement">do</span>
+<span class="Statement">&gt;</span>       B<span class="Special">:=</span><span class="Statement">convert</span><span class="Special">(</span><span class="Statement">series</span><span class="Special">(</span>B<span class="Special">,</span>stps<span class="Special">[</span>ii<span class="Special">]</span><span class="Special">,</span><span class="Constant">4</span><span class="Special">)</span><span class="Special">,</span><span class="Statement">polynom</span><span class="Special">)</span><span class="Special">:</span>
+<span class="Statement">&gt;</span> <span class="Statement">end</span> <span class="Statement">do</span><span class="Special">:</span>
+<span class="Statement">&gt;</span> B<span class="Special">;</span>
+                                                                         <span class="Constant">2</span>
+             <span class="Statement">D</span><span class="Special">[</span><span class="Constant">1</span><span class="Special">,</span> <span class="Constant">2</span><span class="Special">,</span> <span class="Constant">2</span><span class="Special">](</span>f<span class="Special">)(</span>t<span class="Special">,</span> x<span class="Special">,</span> y<span class="Special">)</span> - <span class="Constant">1</span>/<span class="Constant">3</span> <span class="Statement">D</span><span class="Special">[</span><span class="Constant">1</span><span class="Special">,</span> <span class="Constant">1</span><span class="Special">,</span> <span class="Constant">1</span><span class="Special">,</span> <span class="Constant">2</span><span class="Special">,</span> <span class="Constant">2</span><span class="Special">](</span>f<span class="Special">)(</span>t<span class="Special">,</span> x<span class="Special">,</span> y<span class="Special">)</span> ht
+
+<span class="Statement">&gt;</span> test_resid <span class="Special">:=</span> <span class="Statement">simplify</span><span class="Special">(</span><span class="Statement">eval</span><span class="Special">(</span>B-expr<span class="Special">,</span><span class="Special">{</span>ht<span class="Statement">=</span><span class="Constant">0</span><span class="Special">,</span>hx<span class="Statement">=</span><span class="Constant">0</span><span class="Special">,</span>hy<span class="Statement">=</span><span class="Constant">0</span><span class="Special">}))</span><span class="Special">;</span>
+                                    test_resid <span class="Special">:=</span> <span class="Constant">0</span>
+
+<span class="Statement">&gt;</span>
+<span class="Statement">&gt;</span>
+<span class="Statement">&gt;</span> <span class="Statement">quit</span>
+</pre>
+<!-- vim: set foldmethod=manual : -->
+
+

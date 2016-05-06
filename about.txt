@@ -1,0 +1,24 @@
+About FD
+=========
+
+FD is a toolkit for finite difference methods used in solving Partial
+Differential Equations (PDE). Specifically, it is a set of [Maple](http://www.maplesoft.com/) 
+tools that provides a high level language to define a PDE over
+a discretized numerical domain and solve it. This toolbox can compute the
+Finite Difference Approximation (FDA) equivalent of a PDE and generate
+low level language (Fortran) routines and C wrappers to evaluate the FDA
+expression or solve it for the dynamical(unknown) field.
+The process of posing a PDE as an FDA expression has several complications, including
+finding the proper terms for derivatives with correct accuracy,  handling
+boundary points, initialization, developing testing facilities and generating
+solver routines. FD is designed to simplify these steps while allowing full 
+control over the entire process and helps the user to focus on the underlying
+physical/mathematical phenomena described by the PDE. It also provides a rapid 
+prototyping language to apply various discretization schemes, test the desired 
+accuracy and  develop a solid set of routines that are parallel ready 
+and can be used within a framework of a parallel computing infrastructure such as 
+[PAMR](http://laplace.physics.ubc.ca/Doc/pamr/PAMR_ref.pdf).
+
+&copy; Arman Akbarian, 2014
+
+title:={Finite Difference Method in Maple}

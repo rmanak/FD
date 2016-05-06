@@ -1,0 +1,39 @@
+Getting Started
+===============
+After [installing](install.html) the package you can run the first
+FD script by executing
+
+	cd /your/path/to/FD/
+	xmaple
+
+and then executing the following maple command:
+
+	read("fd_first_run.mpl");
+
+which computes the FDA to the following derivatives:
+
+$$
+\frac{\partial^2 f(x)}{\partial x^2}
+$$
+
+$$
+\frac{\partial^3 f(t,x,y)}{\partial t \partial x^2}
+$$
+
+Then by taylor expanding the FDA it confirms that the computed
+expressions are accurate.
+
+The output of your maple run should look like this:
+
+<FILE="fd_first_run.html">
+
+The files ``fd_first_run.mpl`` and ``fd_first_run.mw`` are in the FD's
+main 
+directory that you downloaded. Feel free to [contact
+Arman Akbarian](http://laplace.phas.ubc.ca/People/arman/Contact.html)
+if you have any trouble starting to use FD.
+
+See the [tutorials](tutorials.html) section for more examples on posing
+a PDE and solving it using FD.
+
+title:={Finite Difference Method in Maple}

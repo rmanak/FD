@@ -1,0 +1,112 @@
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>read("FD.mpl"):MFD():</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Warning,%20grid_functions%20is%20not%20assigned"></u></font><font color="#0000ff" size="3" face="Courier New"><u>Warning, grid_functions is not assigned</u></font></a></td>
+</tr>&nbsp;</p>
+<p align="left"><tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>grid_functions:={f,g};</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/CtoD_example_1.gif" width="142" height="14" alt="{f, g}" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>CtoD(f(x,y)+g(x,z)+x^2*y);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/CtoD_example_2.gif" width="163" height="16" alt="`+`(f(i, j), g(i, k), `*`(`^`(x(i), 2), `*`(y(j))))" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>CtoD(f(x+hx)+g(y-hy));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/CtoD_example_3.gif" width="114" height="14" alt="`+`(f(`+`(i, 1)), g(`+`(j, `-`(1))))" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>CtoD(f(t,x)+u(x,y)+r(g(x)));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/CtoD_example_4.gif" width="191" height="14" alt="`+`(f(n, i), u(x(i), y(j)), r(g(i)))" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>CtoD(diff(f(x),x));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">Differential expression is not a valid continuous expression</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#ff00ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Error,%20(in%20CtoD)%20Invalid%20continuous%20expression"></u></font><font color="#ff00ff" size="3" face="Courier New"><u>Error, (in CtoD) Invalid continuous expression</u></font></a></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>CtoD(f(x) + j);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">Invalid continuous expression, detected an index in:f(x)+j</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#ff00ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Error,%20(in%20CtoD)%20Invalid%20continuous%20expression"></u></font><font color="#ff00ff" size="3" face="Courier New"><u>Error, (in CtoD) Invalid continuous expression</u></font></a></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>CtoD(x(y));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">A function is named same as variable in x(y)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#ff00ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Error,%20(in%20CtoD)%20Invalid%20continuous%20expression"></u></font><font color="#ff00ff" size="3" face="Courier New"><u>Error, (in CtoD) Invalid continuous expression</u></font></a></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>

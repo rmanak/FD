@@ -1,0 +1,104 @@
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>read "FD.mpl": MFD():</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Warning,%20grid_functions%20is%20not%20assigned"></u></font><font color="#0000ff" size="3" face="Courier New"><u>Warning, grid_functions is not assigned</u></font></a></td>
+</tr>&nbsp;</p>
+<p align="left"><tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong> grid_functions:={f}:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>LaplaceF:=diff(f(x,y),x,x) + diff(f(x,y),y,y):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>LaplaceF_Discrete:=Gen_Sten(LaplaceF);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/DDS_example_1.gif" width="526" height="32" alt="`+`(`/`(`*`(`+`(f(`+`(i, `-`(1)), j), `-`(`*`(2, `*`(f(i, j)))), f(`+`(i, 1), j))), `*`(`^`(hx, 2))), `/`(`*`(`+`(f(i, `+`(j, `-`(1))), `-`(`*`(2, `*`(f(i, j)))), f(i, `+`(j, 1)))), `*`(`^`(hy, 2))))" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>DDSLaplace:=[</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>{ i = [1,Nx,1] &nbsp;, j=[1,1,1] &nbsp;&nbsp;} &nbsp;= myzero*x(i)*y(j),</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>{ i = [1,Nx,1] &nbsp;, j=[Ny,Ny,1] } &nbsp;= myzero*x(i)*y(j),</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>{ i = [2,Nx-1,1], j=[2,Ny-1,1]} &nbsp;= LaplaceF_Discrete,</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>{ i = [1,1,1] &nbsp;&nbsp;, j=[1,Ny,1] &nbsp;} &nbsp;= myzero*x(i)*y(j),</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>{ i = [Nx,Nx,1] , j=[1,Ny,1] &nbsp;} &nbsp;= myzero*x(i)*y(j)</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>]:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>interface(warnlevel=0):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>A_Gen_Eval_Code(DDSLaplace,input="d",proc_name="calc_laplace");</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">Fortran Code is written to calc_laplace.f
+<br>C header is written to calc_laplace.h
+<br>C call is written to calc_laplace_call</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>

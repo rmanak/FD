@@ -1,0 +1,167 @@
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>read("FD.mpl"): MFD():</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>grid_functions:={f,g}:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>expr:=diff(f(x),x,x)+diff(g(x,y),x,y)+x^2*y+5;</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Gen_Sten_example_1.gif" width="260" height="34" alt="`+`(diff(diff(f(x), x), x), diff(diff(g(x, y), x), y), `*`(`^`(x, 2), `*`(y)), 5)" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Gen_Sten(expr);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Gen_Sten_example_2.gif" width="576" height="32" alt="`+`(`/`(`*`(`+`(f(`+`(i, `-`(1))), `-`(`*`(2, `*`(f(i)))), f(`+`(i, 1)))), `*`(`^`(hx, 2))), `-`(`/`(`*`(`/`(1, 4), `*`(`+`(`-`(g(`+`(i, `-`(1)), `+`(j, `-`(1)))), g(`+`(i, `-`(1)), `+`(j, 1)), g(`+`(..." align="left" border="0"><br><img src="fd_images/Gen_Sten_example_3.gif" width="576" height="16" alt="`+`(`/`(`*`(`+`(f(`+`(i, `-`(1))), `-`(`*`(2, `*`(f(i)))), f(`+`(i, 1)))), `*`(`^`(hx, 2))), `-`(`/`(`*`(`/`(1, 4), `*`(`+`(`-`(g(`+`(i, `-`(1)), `+`(j, `-`(1)))), g(`+`(i, `-`(1)), `+`(j, 1)), g(`+`(..." align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Changing to forward in x FDA scheme and 4th order:</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>FDS_forwardx:=table([ t=[-1,-1],x=[0,-1],y=[-1,-1],z=[-1,-1] ]):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Update_FD_Table(4,FDS_forwardx):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Gen_Sten(expr);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Gen_Sten_example_4.gif" width="576" height="32" alt="`+`(`/`(`*`(`/`(1, 180), `*`(`+`(`*`(812, `*`(f(i))), `-`(`*`(3132, `*`(f(`+`(i, 1))))), `*`(5265, `*`(f(`+`(i, 2)))), `-`(`*`(5080, `*`(f(`+`(i, 3))))), `*`(2970, `*`(f(`+`(i, 4)))), `-`(`*`(972, `*`..." align="left" border="0"><br><img src="fd_images/Gen_Sten_example_5.gif" width="576" height="30" alt="`+`(`/`(`*`(`/`(1, 180), `*`(`+`(`*`(812, `*`(f(i))), `-`(`*`(3132, `*`(f(`+`(i, 1))))), `*`(5265, `*`(f(`+`(i, 2)))), `-`(`*`(5080, `*`(f(`+`(i, 3))))), `*`(2970, `*`(f(`+`(i, 4)))), `-`(`*`(972, `*`..." align="left" border="0"><br><img src="fd_images/Gen_Sten_example_6.gif" width="576" height="14" alt="`+`(`/`(`*`(`/`(1, 180), `*`(`+`(`*`(812, `*`(f(i))), `-`(`*`(3132, `*`(f(`+`(i, 1))))), `*`(5265, `*`(f(`+`(i, 2)))), `-`(`*`(5080, `*`(f(`+`(i, 3))))), `*`(2970, `*`(f(`+`(i, 4)))), `-`(`*`(972, `*`..." align="left" border="0"><br><img src="fd_images/Gen_Sten_example_7.gif" width="576" height="14" alt="`+`(`/`(`*`(`/`(1, 180), `*`(`+`(`*`(812, `*`(f(i))), `-`(`*`(3132, `*`(f(`+`(i, 1))))), `*`(5265, `*`(f(`+`(i, 2)))), `-`(`*`(5080, `*`(f(`+`(i, 3))))), `*`(2970, `*`(f(`+`(i, 4)))), `-`(`*`(972, `*`..." align="left" border="0"><br><img src="fd_images/Gen_Sten_example_8.gif" width="576" height="14" alt="`+`(`/`(`*`(`/`(1, 180), `*`(`+`(`*`(812, `*`(f(i))), `-`(`*`(3132, `*`(f(`+`(i, 1))))), `*`(5265, `*`(f(`+`(i, 2)))), `-`(`*`(5080, `*`(f(`+`(i, 3))))), `*`(2970, `*`(f(`+`(i, 4)))), `-`(`*`(972, `*`..." align="left" border="0"><br><img src="fd_images/Gen_Sten_example_9.gif" width="576" height="16" alt="`+`(`/`(`*`(`/`(1, 180), `*`(`+`(`*`(812, `*`(f(i))), `-`(`*`(3132, `*`(f(`+`(i, 1))))), `*`(5265, `*`(f(`+`(i, 2)))), `-`(`*`(5080, `*`(f(`+`(i, 3))))), `*`(2970, `*`(f(`+`(i, 4)))), `-`(`*`(972, `*`..." align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Gen_Sten(diff(f(t,x),t));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Gen_Sten_example_10.gif" width="348" height="30" alt="`+`(`/`(`*`(`/`(1, 12), `*`(`+`(f(`+`(n, `-`(2)), i), `-`(`*`(8, `*`(f(`+`(n, `-`(1)), i)))), `*`(8, `*`(f(`+`(n, 1), i))), `-`(f(`+`(n, 2), i))))), `*`(ht)))" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Changing the FD_table manually:</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>FD_table[t] := [ [0] , [0,1] ]:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Gen_Sten(diff(f(t,x),t));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Gen_Sten_example_11.gif" width="135" height="30" alt="`+`(`-`(`/`(`*`(`+`(f(n, i), `-`(f(`+`(n, 1), i)))), `*`(ht))))" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">At this point, FD_table's t content does not have any point to specify the scheme for second derivative in time:</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Gen_Sten(diff(g(t),t,t));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#ff00ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Error,%20(in%20Extract_FD)%20cannot%20find%20points%20from%20FD_table%20for%20a%20derivative"></u></font><font color="#ff00ff" size="3" face="Courier New"><u>Error, (in Extract_FD) cannot find points from FD_table for a derivative</u></font></a></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">And in the following points are provided, but not enough for a second order derivative:
+<br></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>FD_table[t] := [ [0] , [0,1] ,[0,1] ]:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Gen_Sten(diff(g(t),t,t));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#ff00ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Error,%20(in%20Calc_Stencil_L)%20Failed%20to%20find%20FDA%20coefficients,%20check%20FD_table%20content!"></u></font><font color="#ff00ff" size="3" face="Courier New"><u>Error, (in Calc_Stencil_L) Failed to find FDA coefficients, check FD_table content!</u></font></a></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">It is safer to update the FD table using FDS tables and specifing the order of accuracy:</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>FDS_backwardt:=table([ t=[-1,2],x=[-1,-1],y=[-1,-1],z=[-1,-1] ]):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Update_FD_Table(5,FDS_backwardt):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Gen_Sten(diff(g(t,x),t,t));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Gen_Sten_example_12.gif" width="576" height="32" alt="`+`(`-`(`/`(`*`(`/`(1, 180), `*`(`+`(`-`(`*`(2, `*`(g(`+`(n, `-`(4)), i)))), `*`(12, `*`(g(`+`(n, `-`(3)), i))), `-`(`*`(15, `*`(g(`+`(n, `-`(2)), i)))), `-`(`*`(200, `*`(g(`+`(n, `-`(1)), i)))), `*`(..." align="left" border="0"><br><img src="fd_images/Gen_Sten_example_13.gif" width="576" height="14" alt="`+`(`-`(`/`(`*`(`/`(1, 180), `*`(`+`(`-`(`*`(2, `*`(g(`+`(n, `-`(4)), i)))), `*`(12, `*`(g(`+`(n, `-`(3)), i))), `-`(`*`(15, `*`(g(`+`(n, `-`(2)), i)))), `-`(`*`(200, `*`(g(`+`(n, `-`(1)), i)))), `*`(..." align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>

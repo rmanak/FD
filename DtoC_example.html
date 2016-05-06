@@ -1,0 +1,126 @@
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>read("FD.mpl"):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>MFD():</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Warning,%20grid_functions%20is%20not%20assigned"></u></font><font color="#0000ff" size="3" face="Courier New"><u>Warning, grid_functions is not assigned</u></font></a></td>
+</tr>&nbsp;</p>
+<p align="left"><tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>grid_functions:={f,g}:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>DtoC( f(i) + g(j)) ;</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/DtoC_example_1.gif" width="74" height="14" alt="`+`(f(x), g(y))" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>DtoC( f(i+1) + g(j-2) + z(k)) ;</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/DtoC_example_2.gif" width="168" height="14" alt="`+`(f(`+`(x, hx)), g(`+`(y, `-`(`*`(2, `*`(hy))))), z)" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong> DtoC(f(i+1,j-1,k));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/DtoC_example_3.gif" width="120" height="14" alt="f(`+`(x, hx), `+`(y, `-`(hy)), z)" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>A:= ( 6*f(n,i) + f(n,i+2) + f(n,i-2)-4*(f(n,i+1) + f(n,i-1)) ):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>B:=DtoC(A);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/DtoC_example_4.gif" width="448" height="14" alt="`+`(`*`(6, `*`(f(t, x))), f(t, `+`(x, `*`(2, `*`(hx)))), f(t, `+`(x, `-`(`*`(2, `*`(hx))))), `-`(`*`(4, `*`(f(t, `+`(x, hx))))), `-`(`*`(4, `*`(f(t, `+`(x, `-`(hx)))))))" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>E:=convert(series(B,hx),polynom);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/DtoC_example_5.gif" width="149" height="19" alt="`*`((D[2, 2, 2, 2](f))(t, x), `*`(`^`(hx, 4)))" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong> DtoC( f(i+j));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">Invalid grid function detected: f(i+j)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#ff00ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Error,%20(in%20DtoC)%20Invalid%20discrete%20expression"></u></font><font color="#ff00ff" size="3" face="Courier New"><u>Error, (in DtoC) Invalid discrete expression</u></font></a></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>DtoC(x(j));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">Invalid discrete expression, detected a variable that is indexed different than index_table:x(j)
+<br>Or a function that is named same as the variables:x(j)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#ff00ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Error,%20(in%20DtoC)%20Invalid%20discrete%20expression"></u></font><font color="#ff00ff" size="3" face="Courier New"><u>Error, (in DtoC) Invalid discrete expression</u></font></a></td>
+</tr>
+</table>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>

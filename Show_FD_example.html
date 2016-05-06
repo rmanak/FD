@@ -1,0 +1,130 @@
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>read("FD.mpl"):MFD():</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New"><u><a href="http://www.maplesoft.com/support/help/errors/view.aspx?path=Warning,%20grid_functions%20is%20not%20assigned"></u></font><font color="#0000ff" size="3" face="Courier New"><u>Warning, grid_functions is not assigned</u></font></a></td>
+</tr>&nbsp;</p>
+<p align="left"><tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>grid_functions:={f,g}:</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>A:=diff(y*f(x,y)*diff(sin(x*y)*g(x),x),x,y);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Show_FD_example_1.gif" width="576" height="30" alt="`+`(`*`(diff(f(x, y), x), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `*`(y, `*`(g(x)))), `*`(sin(`*`(x, `*`(y))), `*`(diff(g(x), x)))))), `*`(y, `*`(diff(diff(f(x, y), x), y), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_2.gif" width="576" height="30" alt="`+`(`*`(diff(f(x, y), x), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `*`(y, `*`(g(x)))), `*`(sin(`*`(x, `*`(y))), `*`(diff(g(x), x)))))), `*`(y, `*`(diff(diff(f(x, y), x), y), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_3.gif" width="576" height="34" alt="`+`(`*`(diff(f(x, y), x), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `*`(y, `*`(g(x)))), `*`(sin(`*`(x, `*`(y))), `*`(diff(g(x), x)))))), `*`(y, `*`(diff(diff(f(x, y), x), y), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_4.gif" width="576" height="34" alt="`+`(`*`(diff(f(x, y), x), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `*`(y, `*`(g(x)))), `*`(sin(`*`(x, `*`(y))), `*`(diff(g(x), x)))))), `*`(y, `*`(diff(diff(f(x, y), x), y), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_5.gif" width="576" height="34" alt="`+`(`*`(diff(f(x, y), x), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `*`(y, `*`(g(x)))), `*`(sin(`*`(x, `*`(y))), `*`(diff(g(x), x)))))), `*`(y, `*`(diff(diff(f(x, y), x), y), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_6.gif" width="576" height="34" alt="`+`(`*`(diff(f(x, y), x), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `*`(y, `*`(g(x)))), `*`(sin(`*`(x, `*`(y))), `*`(diff(g(x), x)))))), `*`(y, `*`(diff(diff(f(x, y), x), y), `*`(`+`(`*`(cos(`*`(x, `*`(y))), `..." align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>B:=Gen_Sten(A):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>lprint(B);</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">(1/2)*(-f(i-1, j)+f(i+1, j))*(cos(x(i)*y(j))*y(j)*g(i)-(1/2)*sin(x(i)*y(j))*(g(i-1)-g(i+1))/hx)/hx-(1/4)*y(j)*(-f(i-1, j-1)+f(i-1, j+1)+f(i+1, j-1)-f(i+1, j+1))*(cos(x(i)*y(j))*y(j)*g(i)-(1/2)*sin(x(i)*y(j))*(g(i-1)-g(i+1))/hx)/(hy*hx)+(1/2)*y(j)*(-f(i-1, j)+f(i+1, j))*(-sin(x(i)*y(j))*x(i)*y(j)*g(i)+cos(x(i)*y(j))*g(i)-(1/2)*cos(x(i)*y(j))*x(i)*(g(i-1)-g(i+1))/hx)/hx+f(i, j)*(-sin(x(i)*y(j))*y(j)^2*g(i)-cos(x(i)*y(j))*y(j)*(g(i-1)-g(i+1))/hx-sin(x(i)*y(j))*(-g(i-1)+2*g(i)-g(i+1))/hx^2)+(1/2)*y(j)*(-f(i, j-1)+f(i, j+1))*(-sin(x(i)*y(j))*y(j)^2*g(i)-cos(x(i)*y(j))*y(j)*(g(i-1)-g(i+1))/hx-sin(x(i)*y(j))*(-g(i-1)+2*g(i)-g(i+1))/hx^2)/hy+y(j)*f(i, j)*(-cos(x(i)*y(j))*x(i)*y(j)^2*g(i)-2*sin(x(i)*y(j))*y(j)*g(i)+sin(x(i)*y(j))*x(i)*y(j)*(g(i-1)-g(i+1))/hx-cos(x(i)*y(j))*(g(i-1)-g(i+1))/hx-cos(x(i)*y(j))*x(i)*(-g(i-1)+2*g(i)-g(i+1))/hx^2)</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>E:=DtoC(B):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>E:=convert(series(E,hx,4),polynom):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>E:=convert(series(E,hy,4),polynom):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>residual:=simplify(eval(A-E,{hx=0,hy=0}));</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Show_FD_example_7.gif" width="79" height="14" alt="0" align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Show_FD();</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Show_FD_example_8.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`-`(`/`(`*`(`/`(1, 4), `*`(`+`(`-`(f(`+`(i, `-`(1)), `+`(j, `-`(1)))), f(`+`(i, `-`(1)), `+`(j, 1)), f(`+`(i, 1), `+`(j, `-`(1))), `-`(f(`+`(i, 1), `+`(j, 1)))))), `*..." align="left" border="0"><br><img src="fd_images/Show_FD_example_9.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`-`(`/`(`*`(`/`(1, 4), `*`(`+`(`-`(f(`+`(i, `-`(1)), `+`(j, `-`(1)))), f(`+`(i, `-`(1)), `+`(j, 1)), f(`+`(i, 1), `+`(j, `-`(1))), `-`(f(`+`(i, 1), `+`(j, 1)))))), `*..." align="left" border="0"><br><img src="fd_images/Show_FD_example_10.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`-`(`/`(`*`(`/`(1, 4), `*`(`+`(`-`(f(`+`(i, `-`(1)), `+`(j, `-`(1)))), f(`+`(i, `-`(1)), `+`(j, 1)), f(`+`(i, 1), `+`(j, `-`(1))), `-`(f(`+`(i, 1), `+`(j, 1)))))), `*..." align="left" border="0"><br><img src="fd_images/Show_FD_example_11.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`-`(`/`(`*`(`/`(1, 4), `*`(`+`(`-`(f(`+`(i, `-`(1)), `+`(j, `-`(1)))), f(`+`(i, `-`(1)), `+`(j, 1)), f(`+`(i, 1), `+`(j, `-`(1))), `-`(f(`+`(i, 1), `+`(j, 1)))))), `*..." align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Changing the FDA scheme to backward in x and forward in y and requesting 4'th order accuracy:</font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>FDS:=table([t=[-1,-1],x=[-1,0],y=[0,-1],z=[-1,-1]]):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Update_FD_Table(4,FDS):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Courier New">FD table updated, see the content using SFDT() command</td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>GS(A):</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Now in the FD_results table you can see that all the derivatives are computed using these schemes, and order of accuracy is 4 or higher. Note that -1 means FD expression is exact in that coordinate, i. e. the expression does not contain derivatives with respect to that coordinate. </font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#ff0000" size="3" face="Courier New"><strong>Show_FD();</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="left"><table width='100%'>
+<tr>
+<td valign="top" align="left"><font color="#0000ff" size="3" face="Times New Roman"><img src="fd_images/Show_FD_example_12.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_13.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_14.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_15.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_16.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_17.gif" width="576" height="34" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_18.gif" width="576" height="30" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_19.gif" width="576" height="14" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_20.gif" width="576" height="14" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_21.gif" width="576" height="14" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_22.gif" width="576" height="14" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"><br><img src="fd_images/Show_FD_example_23.gif" width="576" height="14" alt="{diff(diff(f(x, y), x), y) = [`+`(`/`(`*`(`/`(1, 144), `*`(`+`(`*`(1200, `*`(f(i, `+`(j, 1)))), `-`(`*`(625, `*`(f(i, j)))), `-`(`*`(2304, `*`(f(`+`(i, `-`(1)), `+`(j, 1))))), `*`(1200, `*`(f(`+`(i, `..." align="left" border="0"></td>
+</tr>
+</table></font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="left"><font color="#ff0000" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"></td>
+</tr>
+</table>&nbsp;</p>

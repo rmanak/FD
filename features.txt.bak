@@ -1,0 +1,39 @@
+Features
+=========
+
+- Generates finite difference expression for a user defined accuracy and given FDA 
+scheme for an arbitrary partial differential expression of up to 4 variables
+``f(t,x,y,z)``.
+- Creates FORTRAN routines that can evaluate an FDA expression or solve it for a
+given point using Newton-Gauiss-Seidel method.
+- Creates solver routines for time dependent PDEs or boundary value PDEs.
+- Provides a simple syntax to specify boundary conditions and the dynamics
+  of the PDE on the numerical domain.
+- Can handle periodic boundary condition or user specified condition.
+- Allows imposing boundary conditions at axis/point of the symmetry due to a
+  a specific choice of coordinate, for instance imposing even/odd boundary conditions 
+  at origin in spherical symmetry.
+- Parses a given continuum algebraic/differential expression and can convert it directly to a
+FORTRAN routine to evaluate it on the discretized domain.
+- Provides a rapid prototyping language to create residual evaluators for
+a given differential expression for testing purposes.
+- Creates Parallel ready FORTRAN routine that can interface with 
+parallelization infrastructures such as PAMR
+- FD is written in Maple, a powerful symbolic manipulation language and
+  therefore inherits all the capabilities of Maple, including various tools
+  to deal with PDEs and algebraic expressions. The philosophy behind FD is to
+  leave any straighfoward algebraic task and calculation to machine and
+  allow the user to focus on the FDA scheme, boundary points and eventually
+  the physical results from solving the PDEs.
+- FD was originally developed in [Numerical Relativity
+  group [>]](laplace.phas.ubc.ca) in UBC to solve the Einstein's equation which
+  is a set of 10 highly non-linear coupled PDEs, where even writing down the
+  equations in their continuum form needs to be done using symbolic
+  manipulation softwares such as [GRTensor [>]](grtensor.phy.queensu.ca).
+  Therefore it is mostly developed to deal with large differential expressions 
+  that are machine generated and carries a full explicit form with all the 
+  dependencies and derivatives written in Maple's canonical form like:
+  ``diff(f(t,x,y),x,x)+g(x,y)+diff(g(x,y),y,y,y)+...``
+- Being a Maple toolkit, FD unifies the two part of finding the set of PDEs and converting them 
+  into FDA expression into a single Maple worksheet, that can help with
+  reducing potential human errors.
