@@ -32,6 +32,8 @@ See the following maple script that creates solver code for 1-D heat equation wi
 conditions. FD is designed to be human readable and automates the finite differencing process
 as much as possible while allowing full control:
 
+![alttag](https://github.com/rmanak/FD/blob/Master/img/fdimg.png)
+
     read "../../FD.mpl": Clean_FD(); Make_FD();
     grid_functions := {f};
 
