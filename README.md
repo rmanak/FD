@@ -34,7 +34,7 @@ as much as possible while allowing full control:
 
 ![alttag](https://github.com/rmanak/FD/blob/master/img/fdimg.png)
 
-The above maple source code is here [[+]](blob/master/quick\_dive.mpl)
+The above maple source code is here [[+]](quick\_dive.mpl)
 
 Features
 --------
