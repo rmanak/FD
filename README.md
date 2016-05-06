@@ -23,7 +23,7 @@ Software Homepage
 -----------------
 This software's homepage and extended tutorials/manual is here:
 
-<http://laplace.physics.ubc.ca/People/arman/FD_doc>
+<http://rmanak.github.io/FD>
 
 
 Quick Dive into the Toolkit
