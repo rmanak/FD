@@ -26,9 +26,11 @@ init_f.f: heat.mpl
 .f.o:
 	$(F77_COMP) $*.f
 .c.o:
-	$(CC_COMP) -c $*.c
+	$(CC_COMP)  $*.c
+
 main: $(OBJECTS)
 	$(CC_LOAD) $(OBJECTS) $(LIBS) -o main
+
 clean:
 	/bin/rm $(EXECUTABLE) $(OBJECTS) 
 vclean:

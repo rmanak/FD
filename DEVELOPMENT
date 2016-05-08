@@ -1,6 +1,7 @@
 
 Mon Sep 14 15:16:45 PDT 2015
   * check for '/' '-' and address Graham's suggestion in adding asin acos...
+  
 Fri Aug 21 16:26:27 PDT 2015
   * Integrated Newton Solver routines to FD.mpl
 
