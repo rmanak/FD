@@ -87,9 +87,9 @@ operator.
 Download
 --------
 You can download the FD package from the software's 
-[homepage](http://laplace.phas.ubc.ca/People/arman/FD_doc/), 
+[homepage](http://rmanak.github.io/FD), 
 
-	wget http://laplace.phas.ubc.ca/People/arman/FD_doc/FD.tar.gz
+	wget http://rmanak.github.io/FD/FD.tar.gz
 
 or clone this git repository:
 
