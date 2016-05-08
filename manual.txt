@@ -1,8 +1,8 @@
 # FD User Manual
 
-[Download PDF [dl]](http://laplace.phas.ubc.ca/People/arman/files/fdmanual.pdf)
+[Download PDF [dl]](http://rmanak.github.io/FD/doc/manual.pdf)
 <iframe
-src="http://docs.google.com/gview?url=http://laplace.phas.ubc.ca/People/arman/files/fdmanual.pdf&embedded=true"
+src="http://docs.google.com/gview?url=http://rmanak.github.io/FD/doc/manual.pdf&embedded=true"
 style="width:820px; height:700px;" frameborder="0"></iframe>
 title:={Finite Difference Method in Maple}
 title:={Finite Difference Method in Maple}

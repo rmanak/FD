@@ -6,4 +6,4 @@
 <a href="tutorials.html">Tutorials</a>
 <a href="manual.html">Manual</a>
 <a href="references.html">References</a>
-<a href="FD.mpl.html">Source Code</a></p>
+<a href="https://github.com/rmanak/FD/blob/master/FD.mpl">Source Code</a></p>
