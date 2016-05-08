@@ -9,7 +9,7 @@ read the ``FD.mpl`` file in your maple worksheet:
 Here is a series of shell commands that would download and extract the package and
 execute the first FD script:
 
-	wget http://laplace.phas.ubc.ca/People/arman/FD_doc/FD.tar.gz
+	wget http://rmanak.github.io/FD/FD.tar.gz
 	tar -xvf FD.tar.gz
 	cd FD
 	maple < fd_first_run.mpl
