@@ -1,7 +1,7 @@
 .IGNORE:
 SHELL = /bin/bash
 
-SOURCES = about.txt features.txt doc.txt download.txt install.txt start.txt tutorials.txt references.txt manual.txt 
+SOURCES = about.txt features.txt download.txt install.txt start.txt tutorials.txt references.txt manual.txt 
 
 pagefiles=$(SOURCES:.txt=.html)
 
@@ -38,4 +38,4 @@ clean:
 giveaccess:
 	chmod -R a+r *
 sync:
-	rsync -avz ./ arman@bh8.phas.ubc.ca:~/public_html/FD_doc/
+	git push origin gh-pages

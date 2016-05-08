@@ -1,6 +1,0 @@
-Documentation
--------------
-
-## Features
- - item 1
- - item 2

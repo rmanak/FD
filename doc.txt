@@ -1,2 +1,0 @@
-doc
-title:={Finite Differencing in Maple}
