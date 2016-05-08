@@ -71,7 +71,7 @@ operator.
   therefore inherits all the capabilities of Maple, including various tools
   to deal with PDEs and algebraic expressions.
 - It was originally developed in [Numerical Relativity
-  group<i class="fa fa-external-link"></i>](http://laplace.phas.ubc.ca) in UBC to solve the Einstein's equation which
+  group](http://laplace.phas.ubc.ca) in UBC to solve the Einstein's equation which
   is a set of 10 highly non-linear coupled PDEs, where even writing down the
   equations in their continuum form needs to be done using symbolic
   manipulation software such as [GRTensor](http://grtensor.phy.queensu.ca).
