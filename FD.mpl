@@ -1,10 +1,10 @@
 #------------------------------------------------------------------------------
 # A Finite Differencing Package for Maple
 #
-# See: http://laplace.physics.ubc.ca/People/arman/FD_doc/ 
+# See: http://rmanak.github.io/FD
 # for the documentation of the project
 #
-# Arman Akbarian <arman@phas.ubc.ca>
+# Arman Akbarian <arman2@gmail.com>
 #
 # Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 # http://creativecommons.org/licenses/by-nc-sa/3.0/

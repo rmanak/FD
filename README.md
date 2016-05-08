@@ -71,10 +71,10 @@ operator.
   therefore inherits all the capabilities of Maple, including various tools
   to deal with PDEs and algebraic expressions.
 - It was originally developed in [Numerical Relativity
-  group [>]](http://laplace.phas.ubc.ca) in UBC to solve the Einstein's equation which
+  group<i class="fa fa-external-link"></i>](http://laplace.phas.ubc.ca) in UBC to solve the Einstein's equation which
   is a set of 10 highly non-linear coupled PDEs, where even writing down the
   equations in their continuum form needs to be done using symbolic
-  manipulation software such as [GRTensor [>]](http://grtensor.phy.queensu.ca).
+  manipulation software such as [GRTensor](http://grtensor.phy.queensu.ca).
   Therefore it is mostly developed to deal with large differential expressions 
   that are machine generated and carries a full explicit form with all the 
   dependencies and derivatives written in Maple's canonical form like:
@@ -116,15 +116,15 @@ execute the first FD script:
 
 Getting Started
 ---------------
-See the [getting started section](http://laplace.phas.ubc.ca/People/arman/FD_doc/start.html)
+See the [getting started section](http://rmanak.github.io/FD/start.html)
 for running the first finite difference script using FD.
 
 Tutorials
 ---------
-See the [tutorials section](http://laplace.phas.ubc.ca/People/arman/FD_doc/tutorials.html) of
+See the [tutorials section](http://rmanak.github.io/FD/tutorials.html) of
 the software's homepage. 
 
 User Manual
 -----------
-The extended user manual is [[here]](http://laplace.phas.ubc.ca/People/arman/files/fdmanual.pdf)
+The extended user manual is [[here]](http://rmanak.github.io/FD/doc/manual.pdf)
 
