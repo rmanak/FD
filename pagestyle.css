@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro);
+
 body {
 color:#113355;
 background-color:white;
@@ -40,9 +42,9 @@ h6 { font-size: 110%; }
 
 
 pre {
-font-family: "Courier New", Courier, monospace;
-line-height:1.45;
-font-size:95%;
+font-family: "Source Code Pro", "Courier New", Courier, monospace;
+line-height:inherit;
+font-size:inherit;
 background-color:#F4FBFF;
 border-style: dashed;
 border-width: 1px;
@@ -52,10 +54,9 @@ margin:8px;
 }
 
 code{
-font-family: "Courier New", Courier, monospace;
+font-family: "Source Code Pro", "Courier New", Courier, monospace;
 background-color:inherit;
-color: #050505;
-font-size:105%;
+color: #333;
 }
 
 blockquote{
