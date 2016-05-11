@@ -1,0 +1,1 @@
+alias acp 'git add .; git commit -m "acp"; git push origin gh-pages'
