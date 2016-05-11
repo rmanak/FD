@@ -21,4 +21,6 @@ and can be used within a framework of a parallel computing infrastructure such a
 
 &copy; Arman Akbarian, 2014
 
+note
+
 title:={Finite Difference Method in Maple}
